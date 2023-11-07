@@ -44,5 +44,3 @@ Homestead.json
 # Ignore all local history of files
 .history
 .ionide
-
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,laravel

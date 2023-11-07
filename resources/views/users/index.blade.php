@@ -23,7 +23,7 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->pass_type }}</td>
-                    <td>Mark</td>
+                    <td>x</td>
                 </tr>
             @endforeach
         </tbody>
