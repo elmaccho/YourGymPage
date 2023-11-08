@@ -23,7 +23,9 @@
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->pass_type }}</td>
-                    <td>x</td>
+                    <td>
+                        <button class="btn btn-danger btn-sm user-delete" data-id="{{ $user->id }}">x</button>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
@@ -31,4 +33,10 @@
 
     {{ $users->links() }}
 </div>
+@endsection
+@section('javascript')
+    const deleteUrl = "{{ url('users') }}/";
+@endsection
+@section('js-files')
+    @vite('resources/js/deleteUser.js');
 @endsection
