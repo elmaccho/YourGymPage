@@ -38,5 +38,5 @@
     const deleteUrl = "{{ url('users') }}/";
 @endsection
 @section('js-files')
-    @vite('resources/js/deleteUser.js');
+    @vite('resources/js/delete.js');
 @endsection
