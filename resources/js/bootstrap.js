@@ -1,10 +1,10 @@
 import 'bootstrap';
 import $ from 'jquery';
-
+import Popper from 'popper.js/dist/esm/popper';
 
 window.$ = $;
 window.Swal = swal;
-
+window.Popper = Popper;
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
