@@ -4,11 +4,11 @@
 <div class="container">
     <div class="row">
         <div class="col-10">
-            <h1>Lista produktów</h1>
+            <h1> {{ __('shop.product.index_title') }}</h1>
         </div>
         <div class="col d-flex justify-content-end">
             <a class="" href="{{ route("products.create") }}">
-                <button class="btn btn-primary">Dodaj</button>
+                <button class="btn btn-primary">{{ __('shop.button.add') }}</button>
             </a>
         </div>
     </div>
@@ -17,11 +17,11 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Nazwa</th>
-                <th scope="col">Opis</th>
-                <th scope="col">Ilość</th>
-                <th scope="col">Cena</th>
-                <th scope="col">Akcje</th>
+                <th scope="col">{{ __('shop.product.fields.name') }}</th>
+                <th scope="col">{{ __('shop.product.fields.description') }}</th>
+                <th scope="col">{{ __('shop.product.fields.amount') }}</th>
+                <th scope="col">{{ __('shop.product.fields.price') }}</th>
+                <th scope="col">{{ __('shop.product.fields.action') }}</th>
             </tr>
             </thead>
             <tbody>
@@ -60,6 +60,10 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{ url('products') }}/";
+    const confirmDelete = "{{ __('shop.messages.delete_title') }}";
+    const moreInfoDelete = "{{ __('shop.messages.delete_more_info') }}";
+    const deleteAgree = "{{ __('shop.messages.delete_agree') }}";
+    const deleteCancel = "{{ __('shop.messages.delete_cancel') }}";
 @endsection
 @section('js-files')
     @vite('resources/js/delete.js');

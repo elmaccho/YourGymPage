@@ -2,16 +2,21 @@
 
 @section('content')
 <div class="container">
+    <div class="row">
+        <div class="col-10">
+            <h1> {{ __('shop.user.index_title') }}</h1>
+        </div>
+    </div>
     <table class="table table-striped">
         <thead>
         <tr>
             <th scope="col">#</th>
-            <th scope="col">Imię</th>
-            <th scope="col">Nazwisko</th>
-            <th scope="col">Email</th>
-            <th scope="col">Numer telefonu</th>
-            <th scope="col">Typ karnetu</th>
-            <th scope="col">Akcje</th>
+            <th scope="col">{{ __('shop.user.fields.name') }}</th>
+            <th scope="col">{{ __('shop.user.fields.surname') }}</th>
+            <th scope="col">{{ __('shop.user.fields.email') }}</th>
+            <th scope="col">{{ __('shop.user.fields.phone_number') }}</th>
+            <th scope="col">{{ __('shop.user.fields.pass_type') }}</th>
+            <th scope="col">{{ __('shop.user.fields.actions') }}</th>
         </tr>
         </thead>
         <tbody>
@@ -24,7 +29,7 @@
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->pass_type }}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm user-delete" data-id="{{ $user->id }}">
+                        <button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">
                             <i class="fa-solid fa-trash-can"></i>
                         </button>
                     </td>
@@ -38,6 +43,10 @@
 @endsection
 @section('javascript')
     const deleteUrl = "{{ url('users') }}/";
+    const confirmDelete = "{{ __('shop.messages.delete_title') }}";
+    const moreInfoDelete = "{{ __('shop.messages.delete_more_info') }}";
+    const deleteAgree = "{{ __('shop.messages.delete_agree') }}";
+    const deleteCancel = "{{ __('shop.messages.delete_cancel') }}";
 @endsection
 @section('js-files')
     @vite('resources/js/delete.js');

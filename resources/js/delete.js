@@ -1,13 +1,14 @@
 $(function(){
     $('.delete').click(function(){
         Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
+            title: confirmDelete,
+            text: moreInfoDelete,
             icon: "warning",
             showCancelButton: true,
             confirmButtonColor: "#3085d6",
             cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
+            confirmButtonText: deleteAgree,
+            cancelButtonText: deleteCancel,
           }).then((result) => {
             if (result.isConfirmed) {
                 $.ajax({
