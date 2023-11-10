@@ -4,33 +4,35 @@
     <div class="row">
       <div class="col-md-8 order-md-2 col-lg-9">
         <div class="container-fluid">
-          <div class="row   mb-5">
-            <div class="col-12">
-              <div class="dropdown text-md-left text-center float-md-left mb-3 mt-3 mt-md-0 mb-md-0">
-                <label class="mr-2">Sort by:</label>
-                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Relevance <span class="caret"></span></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown" x-placement="bottom-start" style="position: absolute; transform: translate3d(71px, 48px, 0px); top: 0px; left: 0px; will-change: transform;">
-                  <a class="dropdown-item" href="#">Relevance</a>
-                  <a class="dropdown-item" href="#">Price Descending</a>
-                  <a class="dropdown-item" href="#">Price Ascending</a>
-                  <a class="dropdown-item" href="#">Best Selling</a>
-                </div>
+          <div class="row mb-5">
+            <div class="col-12 d-flex align-items-center justify-content-between">
+              <div class="dropdown me-3">
+                  <label class="me-2">Sort by:</label>
+                  <button class="btn btn-lg btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      Relevance <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a class="dropdown-item" href="#">Relevance</a></li>
+                      <li><a class="dropdown-item" href="#">Price Descending</a></li>
+                      <li><a class="dropdown-item" href="#">Price Ascending</a></li>
+                      <li><a class="dropdown-item" href="#">Best Selling</a></li>
+                  </ul>
               </div>
-              <div class="btn-group float-md-right ml-3">
-                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+          
+              <div class="dropdown">
+                  <label class="me-2">View:</label>
+                  <button class="btn btn-lg btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      9 <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton">
+                      <li><a class="dropdown-item" href="#">12</a></li>
+                      <li><a class="dropdown-item" href="#">24</a></li>
+                      <li><a class="dropdown-item" href="#">48</a></li>
+                      <li><a class="dropdown-item" href="#">96</a></li>
+                  </ul>
               </div>
-              <div class="dropdown float-right">
-                <label class="mr-2">View:</label>
-                <a class="btn btn-lg btn-light dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">9 <span class="caret"></span></a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" x-placement="bottom-end" style="will-change: transform; position: absolute; transform: translate3d(120px, 48px, 0px); top: 0px; left: 0px;">
-                  <a class="dropdown-item" href="#">12</a>
-                  <a class="dropdown-item" href="#">24</a>
-                  <a class="dropdown-item" href="#">48</a>
-                  <a class="dropdown-item" href="#">96</a>
-                </div>
-              </div>
-            </div>
+          </div>
+          
           </div>
           <div class="row">
             @foreach ($products as $product)
@@ -58,21 +60,22 @@
           <div class="row sorting mb-5 mt-5">
             <div class="col-12">
               <a class="btn btn-light">
-                <i class="fas fa-arrow-up mr-2"></i> Back to top</a>
-              <div class="btn-group float-md-right ml-3">
-                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-left"></span> </button>
-                <button type="button" class="btn btn-lg btn-light"> <span class="fa fa-arrow-right"></span> </button>
+                <i class="fas fa-arrow-up mr-2"></i> Back to top
+              </a>
+
+              <div class="dropdown flex-md-row-reverse">
+                  <label class="me-2">View:</label>
+                  <button class="btn btn-light btn-lg dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                      12 <span class="caret"></span>
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                      <li><a class="dropdown-item" href="#">12</a></li>
+                      <li><a class="dropdown-item" href="#">24</a></li>
+                      <li><a class="dropdown-item" href="#">48</a></li>
+                      <li><a class="dropdown-item" href="#">96</a></li>
+                  </ul>
               </div>
-              <div class="dropdown float-md-right">
-                <label class="mr-2">View:</label>
-                <a class="btn btn-light btn-lg dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">12 <span class="caret"></span></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="#">12</a>
-                  <a class="dropdown-item" href="#">24</a>
-                  <a class="dropdown-item" href="#">48</a>
-                  <a class="dropdown-item" href="#">96</a>
-                </div>
-              </div>
+
             </div>
           </div>
         </div>

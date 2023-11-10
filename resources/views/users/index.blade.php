@@ -24,7 +24,9 @@
                     <td>{{ $user->phone_number }}</td>
                     <td>{{ $user->pass_type }}</td>
                     <td>
-                        <button class="btn btn-danger btn-sm user-delete" data-id="{{ $user->id }}">x</button>
+                        <button class="btn btn-danger btn-sm user-delete" data-id="{{ $user->id }}">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
                     </td>
                 </tr>
             @endforeach

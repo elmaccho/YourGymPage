@@ -32,14 +32,22 @@
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->amount }}</td>
                         <td>{{ $product->price }}</td>
-                        <td>
-                            <button class="btn btn-danger btn-sm delete" data-id="{{ $product->id }}">x</button>
-                            <a href="{{ route('products.edit', $product->id) }}">
-                                <button class="btn btn-success btn-sm">e</button>
-                            </a>
-                            <a href="{{ route('products.show', $product->id) }}">
-                                <button class="btn btn-warning btn-sm">p</button>
-                            </a>
+                        <td class="col-1">
+                            <div class="d-flex justify-content-between">
+                                <button class="btn btn-danger btn-sm delete " data-id="{{ $product->id }}">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                                <a href="{{ route('products.edit', $product->id) }}">
+                                    <button class="btn btn-success btn-sm ">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </a>
+                                <a href="{{ route('products.show', $product->id) }}">
+                                    <button class="btn btn-primary btn-sm ">
+                                        <i class="fa-solid fa-eye text-white"></i>
+                                    </button>
+                                </a>
+                            </div>
                         </td>
                     </tr>
                 @endforeach

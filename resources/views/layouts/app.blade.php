@@ -16,7 +16,9 @@
     {{-- SweetAlert2 --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-
+    {{-- FontAwesome --}}
+    <script src="https://kit.fontawesome.com/4798a03daf.js" crossorigin="anonymous"></script>
+    
 </head>
 <body>
     <div id="app">
