@@ -15,14 +15,15 @@
     <div class="row">
         <table class="table table-striped">
             <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">{{ __('shop.product.fields.name') }}</th>
-                <th scope="col">{{ __('shop.product.fields.description') }}</th>
-                <th scope="col">{{ __('shop.product.fields.amount') }}</th>
-                <th scope="col">{{ __('shop.product.fields.price') }}</th>
-                <th scope="col">{{ __('shop.product.fields.action') }}</th>
-            </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ __('shop.product.fields.name') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.description') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.amount') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.price') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.category') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.action') }}</th>
+                </tr>
             </thead>
             <tbody>
                 @foreach ($products as $product)
@@ -32,6 +33,11 @@
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->amount }}</td>
                         <td>{{ $product->price }}</td>
+                        <td>
+                            @if ($product->hasCategory())
+                                {{ $product->category->name }}
+                            @endif
+                        </td>
                         <td class="col-1">
                             <div class="d-flex justify-content-between">
                                 <button class="btn btn-danger btn-sm delete " data-id="{{ $product->id }}">

@@ -40,17 +40,25 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3 justify-content-center">
+                        <div class="row mb-3">
+                            <label for="category" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.category') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="category" class="form-control" name="category_id" disabled>
+                                    @if($product->hasCategory())
+                                        <option>{{ $product->category->name }}</option>
+                                    @else
+                                        <option>Brak</option>
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <div class="col-md-6">
                                 @if (!is_null($product->image_path))
-                                    <img src="{{ asset('storage/' . $product->image_path) }}" class="form-control @error('image') is-invalid @enderror" alt="Zdjęcie produktu">
+                                    <img src="{{ asset('storage/' . $product->image_path) }}" class="form-control" alt="Zdjęcie produktu">
                                 @endif
-
-                                @error('image')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                                @enderror
                             </div>
                         </div>
                 </div>

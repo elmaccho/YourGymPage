@@ -47,13 +47,13 @@
         ],
         'product' => [
             'add_title' => 'Dodaj produkt',
-            'edit_title' => 'Edytuj produkt',
+            'edit_title' => 'Edycja produktu',
             'show_title' => 'Podgląd produktu',
             'index_title' => 'Lista produktu',
             
             'fields' => [
-                'name' => 'Imię',
-                'description' => 'Nazwisko',
+                'name' => 'Nazwa',
+                'description' => 'Opis',
                 'amount' => 'Ilość',
                 'price' => 'Cena',
                 'image' => 'Obraz',
