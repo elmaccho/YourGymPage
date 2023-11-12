@@ -50,7 +50,7 @@
                     {{ $product->name }}
                   </h4>
                   <h5 class="card-price small">
-                    <i>{{ $product->price }}</i>
+                    <i>PLN {{ $product->price }}</i>
                   </h5>
                 </div>
               </div>
