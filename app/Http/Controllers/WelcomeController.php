@@ -11,11 +11,36 @@ class WelcomeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
+        $filters = $request->query('filter');
+        $paginate = $request->query('paginate');
+        
+        $query = Product::query();
+        $query->paginate($paginate) ?? 5;
+
+        if(!is_null($filters)){
+            if(array_key_exists('categories', $filters)){
+                $query = $query->whereIn('category_id', $filters['categories']);
+            }
+
+            if(!is_null($filters['price_min'])){
+                $query = $query->where('price', '>=', $filters['price_min']);
+            }
+
+            if(!is_null($filters['price_max'])){
+                $query = $query->where('price', '<=', $filters['price_max']);
+            }
+        
+            return response()->json([
+                'data' => $query->get()
+            ]);
+        }
+
         return view("welcome",[
-            "products" => Product::paginate(10),
-            "categories" => ProductCategory::orderBy("name", "asc")->get()
+            "products" => $query->paginate($paginate),
+            "categories" => ProductCategory::orderBy("name", "asc")->get(),
+            'defaultImage' => 'https://via.placeholder.com/240x240/5fa9f8/efefef'
         ]);
     }
 }
