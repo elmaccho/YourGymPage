@@ -22,7 +22,7 @@
               <div class="dropdowN">
                   <label class="me-2">View:</label>
                   <a class="btn btn-lg btn-light dropdown-toggle products-actual-count" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                      5 <span class="caret"></span>
+                      5<span class="caret"></span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-end products-count" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item" href="#">5</a>
@@ -66,7 +66,7 @@
               <div class="dropdown flex-md-row-reverse">
                   <label class="me-2">View:</label>
                   <a class="btn btn-lg btn-light dropdown-toggle products-actual-count" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                    5 <span class="caret"></span>
+                    5<span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end products-count" aria-labelledby="dropdownMenuButton">
                     <a class="dropdown-item" href="#">5</a>
