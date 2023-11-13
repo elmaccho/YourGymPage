@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HelloWorldController;
+use App\Http\Controllers\MainController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -19,6 +20,7 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', [WelcomeController::class, 'index']);
+Route::get('/main', [MainController::class,'index'])->name('main.index');
 
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::resource('products', ProductController::class);

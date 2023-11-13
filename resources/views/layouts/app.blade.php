@@ -34,7 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
-
+                        <a href="{{ route('main.index') }}">Powrót na stronę główną</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->

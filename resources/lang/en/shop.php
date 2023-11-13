@@ -51,6 +51,18 @@
             'show_title' => 'Show product',
             'index_title' => 'Products list',
             
+            'status' => [
+                'store' => [
+                    'success' => 'Product has been saved!',
+                ],
+                'update' => [
+                    'success' => 'Product has been updated!',
+                ],
+                'delete' => [
+                    'success' => 'Product has been deleted!',
+                ]
+            ],
+
             'fields' => [
                 'name' => 'Name',
                 'description' => 'Description',
@@ -71,7 +83,13 @@
                 'phone_number' => 'Phone number',
                 'pass_type' => 'Pass type',
                 'actions' => 'Actions',
-            ]
+            ],
+
+            'status' => [
+                'delete' => [
+                    'success' => 'User deleted!',
+                ]
+            ],
         ]
     ]
 ?>
