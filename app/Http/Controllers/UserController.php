@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -64,6 +65,7 @@ class UserController extends Controller
     {
         try{
             $user->delete();
+            Session::flash('status', __('shop.user.status.delete.success'));
             return response()->json([
                 'status' => 'success'
             ]);

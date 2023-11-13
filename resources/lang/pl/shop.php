@@ -50,6 +50,18 @@
             'edit_title' => 'Edycja produktu',
             'show_title' => 'Podgląd produktu',
             'index_title' => 'Lista produktu',
+
+            'status' => [
+                'store' => [
+                    'success' => 'Produkt zapisany!',
+                ],
+                'update' => [
+                    'success' => 'Produkt zaktualizowany!',
+                ],
+                'delete' => [
+                    'success' => 'Produkt usunięty!',
+                ]
+            ],
             
             'fields' => [
                 'name' => 'Nazwa',
@@ -71,7 +83,13 @@
                 'phone_number' => 'Numer telefonu',
                 'pass_type' => 'Typ karnetu',
                 'actions' => 'Akcje',
-            ]
+            ],
+
+            'status' => [
+                'delete' => [
+                    'success' => 'Użytkownik usunięty!',
+                ]
+            ],
         ]
     ]
 ?>
