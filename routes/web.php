@@ -23,9 +23,14 @@ Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/main', [MainController::class,'index'])->name('main.index');
 
 Route::middleware(['auth', 'verified'])->group(function(){
-    Route::resource('products', ProductController::class);
-    Route::get('/users/list', [UserController::class, 'index'])->middleware('auth');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->middleware('auth');
+
+    Route::middleware('can:isAdmin')->group(function(){
+        Route::resource('products', ProductController::class);
+        Route::get('/users/list', [UserController::class, 'index']);
+        Route::delete('/users/{user}', [UserController::class, 'destroy']);
+    });
+
+
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 });
 
@@ -37,6 +42,5 @@ Route::middleware(['auth', 'verified'])->group(function(){
 // Route::post('/products/{product}', [ProductController::class, 'update'])->name("products.update")->middleware('auth');
 // Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name("products.destroy")->middleware('auth');
 
-Route::get('/hello', [HelloWorldController::class, 'show']);
 
 Auth::routes(['verify' => true]);
