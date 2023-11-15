@@ -45,7 +45,7 @@
                     <img src="{{ $defaultImage }}" class="img-fluid mx-auto d-block" alt="Zdjęcie produktu">
                   @endif
                 </div>
-                <div class="card-body text-center">
+                <div class="card-body text-center bg-white">
                   <h4 class="card-title">
                     {{ $product->name }}
                   </h4>
@@ -53,6 +53,8 @@
                     <i>PLN {{ $product->price }}</i>
                   </h5>
                 </div>
+
+                <button class="btn btn-success btn-sm add-cart-btn" data-id="{{ $product->id }}" @guest disabled @endguest><i class="fas fa-cart-plus"></i> Dodaj do koszyka</button>
               </div>
             </div>
             @endforeach
@@ -109,8 +111,11 @@
   
 @endsection
 @section('javascript')
-    const storagePath = '{{ asset('storage') }}/'
-    const defaultImage = '{{ $defaultImage }}/'
+    const WELCOME_DATA = {
+      storagePath: '{{ asset('storage') }}/',
+      defaultImage: '{{ $defaultImage }}/',
+      addToCart: '{{ url('cart') }}/'
+    }
 @endsection
 @section('js-files')
     @vite('resources/js/welcome.js');

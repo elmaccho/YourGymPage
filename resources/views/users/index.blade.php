@@ -5,7 +5,7 @@
     @include('helpers.flash-messages')
     <div class="row">
         <div class="col-10">
-            <h1> {{ __('shop.user.index_title') }}</h1>
+            <h1><i class="fa-solid fa-users"></i> {{ __('shop.user.index_title') }}</h1>
         </div>
     </div>
     <table class="table table-striped">

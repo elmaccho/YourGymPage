@@ -54,7 +54,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 justify-content-center">
                             <div class="col-md-6">
                                 @if (!is_null($product->image_path))
                                     <img src="{{ asset('storage/' . $product->image_path) }}" class="form-control" alt="Zdjęcie produktu">
