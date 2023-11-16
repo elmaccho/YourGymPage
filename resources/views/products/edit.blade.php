@@ -103,7 +103,8 @@
 
                         @if (!is_null($product->image_path)) 
                             <div class="row mb-3 justify-content-center">
-                                <div class="col-md-6">
+                                <div class="col-md-6 d-flex align-items-center gap-2">
+                                    <a class="btn btn-primary btn-sm" href="{{ route('products.downloadImage', $product->id) }}">Pobierz</a>
                                     <img class="form-control" src="{{ asset('storage/' . $product->image_path) }}" alt="Zdjęcie produktu">
                                 </div>
                             </div>
@@ -112,7 +113,7 @@
                         @endif
 
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-6 fl-right">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('shop.button.save') }}
                                 </button>
