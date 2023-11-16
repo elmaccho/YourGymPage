@@ -6,13 +6,15 @@
 }
 .main-btn{
     background-color: #FF6B00;
-    padding: 0px 10px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .nav-link{
     color: white;
 }
 .brand-name{
     color: white;
+    font-size: 40px;
 }
 #home{
     background: url('/public/images/headerbackground.png') center center/cover no-repeat; /* Zmien 'sciezka/do/tla.jpg' na ścieżkę do Twojego obrazu */
