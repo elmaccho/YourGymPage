@@ -1,0 +1,39 @@
+.navbar{
+    background: #ffffff0a;
+    position: fixed;
+    width: 100%;
+    padding: 15px 10px;
+}
+.main-btn{
+    background-color: #FF6B00;
+    padding: 0px 10px;
+}
+.nav-link{
+    color: white;
+}
+.brand-name{
+    color: white;
+}
+#home{
+    background: url('/public/images/headerbackground.png') center center/cover no-repeat; /* Zmien 'sciezka/do/tla.jpg' na ścieżkę do Twojego obrazu */
+    color: white; /* Kolor tekstu na tle obrazu */
+    text-align: center;
+    padding: 100px 0; /* Dodatkowy padding dla lepszego wyglądu */
+    min-height: 100vh;
+}
+.main-title{
+    font-size: 82px;
+}
+.inner-main-text{
+    color: #FF6B00;
+}
+.sign-up-btn{
+    border-radius: unset;
+    font-size: 32px;
+    padding: 10px 40px;
+    color: white;
+}
+.sign-up-btn:hover{
+    background-color: #FF6B00;
+    color: #232323;
+}

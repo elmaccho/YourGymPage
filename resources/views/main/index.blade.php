@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>YourGym</title>
+
+    
 </head>
 <body>
     <nav class="navbar navbar-expand-lg px-5">
-
         <div class="col">
-            <h1><strong><em>YourGym</em></strong></h1>
+            <h1 class="brand-name"><strong><em>YourGym</em></strong></h1>
         </div>
         <div class="col-0">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,8 +37,8 @@
                     </li>
     
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link fs-4" href="{{ route('login') }}">{{ __('Login') }}</a>
+                        <li class="nav-item main-btn">
+                            <a class="nav-link fs-4" href="{{ route('login') }}">Zaloguj się</a>
                         </li>
                     @else
     
@@ -59,9 +60,20 @@
             </div>
         </div>
     </nav>
+    <section id="home" class="d-flex align-items-center">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 d-flex align-items-center flex-column gap-5">
+              <h2 class="main-title"><strong><span class="inner-main-text">Nie bój się</span> być początkującym!</strong></h2>
+              <a href="#" class="btn btn-lg main-btn sign-up-btn">Zapisz się</a>
+            </div>
+          </div>
+        </div>
+      </section>
     
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite('resources/css/main.css')
 </body>
 </html>
