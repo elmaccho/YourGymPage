@@ -39,3 +39,47 @@
     background-color: #FF6B00;
     color: #232323;
 }
+.card-row{
+    display: flex;
+}
+.card-wrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    width: 100%;
+    position: relative;
+    background-color: #1E1E1E;
+}
+.read-more-btn{
+    background-color: #FF6B00;
+    font-size: 20px;
+    padding: 5px 35px;
+    border-radius: unset;
+    color: white;
+}
+.read-more-btn:hover{
+    background-color: #FF6B00;
+}
+.FontAwesomeIcon{
+    color: white;
+    font-size: 64px;
+}
+.card-background{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: 0.3s;
+}
+.card-photo{
+    width: 100%;
+    height: 100%;
+    filter: brightness(30%);
+}
+.card-wrapper:hover .card-background{
+    opacity: 100%;
+}

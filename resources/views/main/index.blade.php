@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>YourGym</title>
-
+    <script src="https://kit.fontawesome.com/4798a03daf.js" crossorigin="anonymous"></script>
     
 </head>
 <body>
@@ -71,8 +71,60 @@
         </div>
     </section>
     <section id="offert">
+        <div class="card-row ">
+            <div class="card-wrapper card-gym">
+                
+                <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-dumbbell"></i></span>
+                <strong class="z-1"><h3 class="inner-main-text h1">Siłownia</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center z-1">Najnowocześniejszy sprzęt i fachowi trenerzy</p>
 
-          
+                <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
+
+                <div class="card-background"><img class="card-photo" src="{{ url('images/fitness-3502830_1280.jpg') }}" alt=""></div>
+            </div>
+            <div class="card-wrapper card-fitness">
+                <div class="card-background"></div>
+                <span class="FontAwesomeIcon"><i class="fa-solid fa-child-reaching"></i></span>
+                <strong><h3 class="inner-main-text h1">Fitness</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center">Wdzięk i delikatność Zumba, Joga, Pilates, Step i inne zajęcia</p>
+
+                <a class="btn read-more-btn" href="#">Czytaj więcej</a>
+            </div>
+            <div class="card-wrapper card-squash">
+                <div class="card-background"></div>
+                <span class="FontAwesomeIcon"><i class="fa-solid fa-baseball"></i></span>
+                <strong><h3 class="inner-main-text h1">Squasz</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center">Tenis inaczej. Ekskluzywny sport na wyciągnięcie rakiety</p>
+
+                <a class="btn read-more-btn" href="#">Czytaj więcej</a>
+            </div>
+        </div>
+        <div class="card-row ">
+            <div class="card-wrapper card-indoor-cycling">
+                <div class="card-background"></div>
+                <span class="FontAwesomeIcon"><i class="fa-solid fa-person-biking"></i></span>
+                <strong><h3 class="inner-main-text h1">Indoor cycling</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center">Najnowocześniejszy sprzęt i fachowi trenerzy</p>
+
+                <a class="btn read-more-btn" href="#">Czytaj więcej</a>
+            </div>
+            <div class="card-wrapper card-relax">
+                <div class="card-background"></div>
+                <span class="FontAwesomeIcon"><i class="fa-solid fa-bed"></i></span>
+                <strong><h3 class="inner-main-text h1">Strefa relaksu</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center">Odpoczynek połączony z relaksem w świetnej aranżacji</p>
+
+                <a class="btn read-more-btn" href="#">Czytaj więcej</a>
+            </div>
+            <div class="card-wrapper card-health">
+                <div class="card-background"></div>
+                <span class="FontAwesomeIcon"><i class="fa-solid fa-notes-medical"></i></span>
+                <strong><h3 class="inner-main-text h1">Zdrowie</h3></strong>
+                <p class="lead text-light w-75 h-25 text-center">Monitory LCD i bieżąca kontrola treningu</p>
+
+                <a class="btn read-more-btn" href="#">Czytaj więcej</a>
+            </div>
+        </div>
     </section>
 
         <!-- Scripts -->
