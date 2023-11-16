@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Dtos\Cart\CartDto;
-use App\Dtos\Cart\CartItemDto;
+use App\ValueObjects\CartDto;
+use App\ValueObjects\CartItemDto;
 use App\Models\Product;
+use App\ValueObjects\Cart;
+use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -16,37 +18,51 @@ class CartController extends Controller
     /**
      * Show the application dashboard.
      *
-     * @return \Illuminate\Contracts\Support\Renderable
+     * @return View
      */
     public function index(): View
     {
-        dd(Session::get('cart', new CartDto()));
-        return view('home');
+        dd(Session::get("cart", new Cart()));
+        return view('cart.index', [
+            'cart' => Session::get('cart', new Cart())
+        ]);
     }
 
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param Product $product
+     * @return JsonResponse
+     */
     public function store(Product $product): JsonResponse
     {
-        $cart = Session::get('cart', new CartDto());
-        $items = $cart->getItems();
-
-        if(Arr::exists($items, $product->id)){
-            $items[$product->id]->incrementQuantity();
-        } else {
-            $cartItemDto = new CartItemDto();
-            $cartItemDto -> setProductId($product->id);
-            $cartItemDto -> setName($product->name);
-            $cartItemDto -> setPrice($product->price);
-            $cartItemDto -> setImagePath($product->image_path);
-            $cartItemDto -> setQuantity(1);
-            $items[$product->id] = $cartItemDto;
-        }
-        $cart->setItems($items);
-        $cart->incrementTotalQuantity();
-        $cart->incrementTotalSum($product->price);
-        
-        Session::put('cart', $cart);
+        $cart = Session::get('cart', new Cart());
+        Session::put('cart', $cart->addItem($product));
         return response()->json([
-            'success'=> 'success'
+            'status' => 'success'
         ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Product  $product
+     * @return JsonResponse
+     */
+    public function destroy(Product $product): JsonResponse
+    {
+        try {
+            $cart = Session::get('cart', new Cart());
+            Session::put('cart', $cart->removeItem($product));
+            Session::flash('status', __('shop.product.status.delete.success'));
+            return response()->json([
+                'status' => 'success'
+            ]);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'Wystąpił błąd!'
+            ])->setStatusCode(500);
+        }
     }
 }

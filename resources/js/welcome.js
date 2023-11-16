@@ -18,8 +18,7 @@ $(function(){
         })
         .done(function(){
             Swal.fire({
-                title: 'ebe ebe',
-                text: 'Sterydy dodane do koszyka',
+                title: 'Dodano do koszyka!',
                 icon: "success",
                 showCancelButton: true,
                 confirmButtonText: "<i class=\"fas fa-cart-plus\"></i> Przejdź do koszyka",
