@@ -3,6 +3,7 @@
     position: fixed;
     width: 100%;
     padding: 15px 10px;
+    z-index: 2;
 }
 .main-btn{
     background-color: #FF6B00;
@@ -16,6 +17,7 @@
     color: white;
     font-size: 40px;
 }
+
 #home{
     background: url('/public/images/headerbackground.png') center center/cover no-repeat; /* Zmien 'sciezka/do/tla.jpg' na ścieżkę do Twojego obrazu */
     color: white; /* Kolor tekstu na tle obrazu */
@@ -124,6 +126,7 @@
 
 #signin{
     background-image: url('/public/images/image\ 2.png');
+    background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -211,8 +214,41 @@
     #offert{
         grid-template-columns: auto auto;
     }
+    #signin{
+        background-position: center;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 991.11px) {
+    .navbar{
+        background-color: rgb(255, 255, 255);
+        flex-direction: column;
+    }
+    .navbar-icon-fa{
+        color: #232323;
+        font-size: 30px;
+    }
+    .col-nav{
+        display: flex;
+        gap: 20px;
+    }
+    .main-btn{
+        background-color: #FF6B00;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .nav-link{
+        color: #232323;
+    }
+    .brand-name{
+        color: #232323;
+        font-size: 40px;
+    }
 }
 @media screen and (max-width: 764px) {
+    .main-title{
+        font-size: 58px;
+    }
     #offert{
         grid-template-columns: auto;
     }

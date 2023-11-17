@@ -10,14 +10,13 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg px-5">
-        <div class="col">
+        <div class="col col-nav">
             <h1 class="brand-name"><strong><em>YourGym</em></strong></h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="navbar-icon-fa fa-solid fa-bars"></i>
+            </button>
         </div>
         <div class="col-0">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-    
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav gap-5">
                     <li class="nav-item">
@@ -183,7 +182,6 @@
 
 
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-        @vite('resources/css/main.css')
+        @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/main.css', 'resources/js/main.js'])
 </body>
 </html>
