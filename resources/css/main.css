@@ -39,8 +39,10 @@
     background-color: #FF6B00;
     color: #232323;
 }
+
 #offert{
-    min-height: 100vh;
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 .card-row{
     display: flex;
@@ -86,6 +88,40 @@
 .card-wrapper:hover .card-background{
     opacity: 100%;
 }
+.bg-gym, .bg-fitness, .bg-squash,
+.bg-cycling, .bg-relax, .bg-health{
+    background-size: cover;
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transition: 0.3s;
+    filter: brightness(35%);
+}
+.bg-gym{
+    background-image: url('/public/images/fitness-3502830_1280.jpg');
+}
+.bg-fitness{
+    background-image: url('/public/images/kettlebell-3293475_1280.jpg');
+}
+.bg-squash{
+    background-image: url('/public/images/16v2r0t250t0R1I6G5V0F4C653f3m536.jpg');
+}
+.bg-cycling{
+    background-image: url('/public/images/indoor-cycling.jpg');
+}
+.bg-relax{
+    background-image: url('/public/images/c2977f93f7937b51fb95d49c92272ff9086b39cd.jpeg');
+}
+.bg-health{
+    background-image: url('/public/images/masaz-relaksacyjny-u-fizjoterapeuty.jpeg');
+}
+.card-wrapper:hover .card-bg{
+    opacity: 100;
+}
+
 #signin{
     background-image: url('/public/images/image\ 2.png');
     display: flex;
@@ -145,6 +181,10 @@
 }
 .pass-start{
     width: 75%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 25px;
 }
 .pass-start-input{
     width: 100%;
@@ -165,4 +205,15 @@
 .buy-pass-btn:hover{
     background-color: #FF6B00;
     color: #232323;
+}
+
+@media screen and (max-width: 1124px) {
+    #offert{
+        grid-template-columns: auto auto;
+    }
+}
+@media screen and (max-width: 764px) {
+    #offert{
+        grid-template-columns: auto;
+    }
 }

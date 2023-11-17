@@ -75,64 +75,58 @@
     </section>
 
     <section id="offert">
-        <div class="card-row ">
-            <div class="card-wrapper card-gym">
+        {{-- <div class="card-row"> --}}
+            <div class="card-wrapper">
+                <div class="bg-gym card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-dumbbell"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1">Siłownia</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Najnowocześniejszy sprzęt i fachowi trenerzy</p>
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/fitness-3502830_1280.jpg') }}" alt=""></div>
             </div>
-            <div class="card-wrapper card-fitness">
+            <div class="card-wrapper">
+                <div class="bg-fitness card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-child-reaching"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1">Fitness</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Wdzięk i delikatność Zumba, Joga, Pilates, Step i inne zajęcia</p>
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/kettlebell-3293475_1280.jpg') }}" alt=""></div>
             </div>
-            <div class="card-wrapper card-squash">
+            <div class="card-wrapper">
+                <div class="bg-squash card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-baseball"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1">Squasz</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Tenis inaczej. Ekskluzywny sport na wyciągnięcie rakiety</p>
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/16v2r0t250t0R1I6G5V0F4C653f3m536.jpg') }}" alt=""></div>
             </div>
-        </div>
-        <div class="card-row ">
-            <div class="card-wrapper card-indoor-cycling">
+        {{-- </div>
+        <div class="card-row "> --}}
+            <div class="card-wrapper">
+                <div class="bg-cycling card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-person-biking"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1">Indoor cycling</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Najnowocześniejszy sprzęt i fachowi trenerzy</p>
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/indoor-cycling.jpg') }}" alt=""></div>
             </div>
-            <div class="card-wrapper card-relax">
+            <div class="card-wrapper">
+                <div class="bg-relax card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-bed"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1">Strefa relaksu</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Odpoczynek połączony z relaksem w świetnej aranżacji</p>
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/c2977f93f7937b51fb95d49c92272ff9086b39cd.jpeg') }}" alt=""></div>
             </div>
-            <div class="card-wrapper card-health">
+            <div class="card-wrapper">
+                <div class="bg-health card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-notes-medical"></i></span>
                 <strong class="z-1"><h3 class="inner-main-text h1 z-1">Zdrowie</h3></strong>
                 <p class="lead text-light w-75 h-25 text-center z-1">Monitory LCD i bieżąca kontrola treningu</p>
                 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
-
-                <div class="card-background"><img class="card-photo" src="{{ url('images/masaz-relaksacyjny-u-fizjoterapeuty.jpeg') }}" alt=""></div>
             </div>
-        </div>
+        {{-- </div> --}}
     </section>
 
     <section id="signin">
@@ -164,13 +158,14 @@
             </div>
 
             <div class="pass-start m-4">
-                <span class="text-light">Start karnetu:</span>
-                <span><input class="pass-start-input" type="date" name="" id=""></span>
+                <form action="">
+                    <span class="text-light">Start karnetu:</span>
+                    <span><input class="pass-start-input" type="date" name="" id=""></span>
+                </form>
+                <a href="#">
+                    <button class="btn buy-pass-btn">KUP KARNET</button>
+                </a>
             </div>
-
-            <a href="#">
-                <button class="btn buy-pass-btn">KUP KARNET</button>
-            </a>
         </div>
 
         <p class="offert-text"><strong>LUB</strong></p>
