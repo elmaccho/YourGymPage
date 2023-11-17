@@ -39,6 +39,9 @@
     background-color: #FF6B00;
     color: #232323;
 }
+#offert{
+    min-height: 100vh;
+}
 .card-row{
     display: flex;
 }
@@ -47,7 +50,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 400px;
+    height: 50vh;
     width: 100%;
     position: relative;
     background-color: #1E1E1E;
@@ -82,4 +85,84 @@
 }
 .card-wrapper:hover .card-background{
     opacity: 100%;
+}
+#signin{
+    background-image: url('/public/images/image\ 2.png');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 45px;
+    padding: 45px 60px;
+}
+.offert-text{
+    font-size: 64px;
+    color: white;
+}
+.pass-wrapper{
+    background-color: #0000008d;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 450px;
+    padding: 30px 0;
+    backdrop-filter: blur(5px);
+}
+.pass-title{
+    font-size: 42px;
+    font-weight: 600;
+    text-align: center;
+    color: white;
+}
+.pass-inner-title{
+    color: #FF6B00;
+}
+.pass-price{
+    font-size: 48px;
+    font-weight: 600;
+    color: white;
+}
+.pass-inner-price{
+    font-weight: 400;
+}
+.pass-info{
+    width: 100%;
+    background-color: #FF6B00;
+    box-sizing: border-box;
+    padding: 15px 30px;
+}
+.pass-inner-info{
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.41);
+}
+.pass-inner-info-text, .pass-inner-info-price{
+    color: white;
+    font-size: 18px;
+}
+.pass-inner-info-price{
+    font-weight: 600;
+}
+.pass-start{
+    width: 75%;
+}
+.pass-start-input{
+    width: 100%;
+    height: 40px;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.764);
+    outline: none;
+    border: none;
+    padding: 15px;
+}
+.buy-pass-btn{
+    background-color: #FF6B00;
+    border-radius: unset;
+    color: white;
+    font-size: 20px;
+    padding: 5px 30px;
+}
+.buy-pass-btn:hover{
+    background-color: #FF6B00;
+    color: #232323;
 }
