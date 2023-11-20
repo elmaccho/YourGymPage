@@ -1,3 +1,10 @@
+.primary-color{
+    color: #FF6B00;
+}
+.primary-background{
+    background-color: #FF6B00;
+}
+
 .navbar{
     background: #ffffff0a;
     position: fixed;
@@ -214,6 +221,14 @@
     background-color: #FF6B00;
     color: #232323;
 }
+
+#contactus{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* background-color: gold; */
+}
+
 
 @media screen and (max-width: 1124px) {
     #offert{

@@ -178,6 +178,45 @@
         </div>
     </section>
 
+    <section id="contactus">
+        <div class="mt-5 container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3 class="primary-color"><strong>Masz jakieś pytanie?</strong></h3>
+                        <p class="lead">Postaramy się odpowiedzieć jak najszybciej się da!</p>
+                    </div>
+                    <div class="form-wrapper p-4 rounded shadow-md">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Imię i nazwisko</label>
+                                <input type="text" name="name" class="form-control" placeholder="Imię i nazwisko" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="text" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Wiadomość</label>
+                                <textarea name="message" cols="20" rows="6" class="form-control" placeholder="Wiadomość"></textarea>
+                            </div>
+                            <button type="submit" class="btn buy-pass-btn">Wyślij</button>
+                        </form>
+                    </div>
+                </div>
+    
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h3 class="primary-color"><strong>Dane kontaktowe</strong></h3>
+                        <p>Adres: ul. Jakastam 64, 26-630</p>
+                        <p>Telefon: +48-111-222-333</p>
+                        <p>Email: yourgym@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
 
         <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/main.css', 'resources/js/main.js'])
