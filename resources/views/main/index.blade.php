@@ -74,7 +74,6 @@
     </section>
 
     <section id="offert">
-        {{-- <div class="card-row"> --}}
             <div class="card-wrapper">
                 <div class="bg-gym card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-dumbbell"></i></span>
@@ -99,8 +98,7 @@
 
                 <a class="btn read-more-btn z-1" href="#">Czytaj więcej</a>
             </div>
-        {{-- </div>
-        <div class="card-row "> --}}
+
             <div class="card-wrapper">
                 <div class="bg-cycling card-bg"></div>
                 <span class="FontAwesomeIcon z-1"><i class="fa-solid fa-person-biking"></i></span>

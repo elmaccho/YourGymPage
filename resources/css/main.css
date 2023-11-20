@@ -4,6 +4,10 @@
     width: 100%;
     padding: 15px 10px;
     z-index: 2;
+    transition: 0.3s;
+}
+.nav-scroll{
+    background-color: #232323;
 }
 .main-btn{
     background-color: #FF6B00;
@@ -20,6 +24,7 @@
 
 #home{
     background: url('/public/images/headerbackground.png') center center/cover no-repeat; /* Zmien 'sciezka/do/tla.jpg' na ścieżkę do Twojego obrazu */
+    /* background-size: cover; */
     color: white; /* Kolor tekstu na tle obrazu */
     text-align: center;
     padding: 100px 0; /* Dodatkowy padding dla lepszego wyglądu */
