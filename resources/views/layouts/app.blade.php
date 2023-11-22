@@ -19,6 +19,9 @@
     {{-- FontAwesome --}}
     <script src="https://kit.fontawesome.com/4798a03daf.js" crossorigin="anonymous"></script>
     
+    {{-- cart css --}}
+    @yield('css-files')
+
 </head>
 <body>
     <div id="app">
@@ -64,7 +67,8 @@
                                         <a class="dropdown-item" href="/users/list">{{ __('shop.nav.users') }}</a>
                                         <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('shop.nav.products') }}</a>
                                     @endcan
-
+                                        
+                                    <a class="dropdown-item" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
