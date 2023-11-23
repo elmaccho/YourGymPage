@@ -5,6 +5,11 @@ import Popper from 'popper.js/dist/esm/popper';
 window.$ = $;
 window.Swal = swal;
 window.Popper = Popper;
+window.$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+    }
+});
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
