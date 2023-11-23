@@ -54,7 +54,9 @@
                   </h5>
                 </div>
 
-                <button class="btn btn-success btn-sm add-cart-btn" data-id="{{ $product->id }}" @guest disabled @endguest><i class="fas fa-cart-plus"></i> Dodaj do koszyka</button>
+                <button class="btn btn-success btn-sm add-cart-btn" data-id="{{ $product->id }}" @guest disabled @endguest>
+                  <i class="fas fa-cart-plus"></i> Dodaj do koszyka
+                </button>
               </div>
             </div>
             @endforeach

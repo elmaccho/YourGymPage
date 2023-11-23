@@ -64,7 +64,7 @@
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
 
                                     @can('isAdmin')
-                                        <a class="dropdown-item" href="/users/list">{{ __('shop.nav.users') }}</a>
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('shop.nav.users') }}</a>
                                         <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('shop.nav.products') }}</a>
                                     @endcan
                                         

@@ -4,35 +4,38 @@ $(function(){
         $('a.products-actual-count').text($(this).text());
         getProducts($(this).text());
     })
-
-    $('a#filter-btn').click(function(){
+    
+    $('a#filter-btn').click(function(event){
         event.preventDefault();
         getProducts($('a.products-actual-count').first().text());
+        console.log('chuj')
     })
 
-    $('button.add-cart-btn').click(function(){
+    $('button.add-cart-btn').click(function (event) {
         event.preventDefault();
+        let productId = $(this).data('id');
+
         $.ajax({
             method: "POST",
-            url: WELCOME_DATA.addToCart + $(this).data('id')
+            url: WELCOME_DATA.addToCart + productId
         })
-        .done(function(){
+        .done(function () {
             Swal.fire({
                 title: 'Dodano do koszyka!',
                 icon: "success",
                 showCancelButton: true,
                 confirmButtonText: "<i class=\"fas fa-cart-plus\"></i> Przejdź do koszyka",
                 cancelButtonText: "<i class=\"fas fa-shopping-bag\"></i> Kontynuuj zakupy"
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     window.location = WELCOME_DATA.cartList;
                 }
-              });
+            });
         })
-        .fail(function (){
-            Swal.fire("Oops...", "Wystąpił błąd", "error")
-        })
-    })
+        .fail(function () {
+            Swal.fire("Oops...", "Wystąpił błąd", "error");
+        });
+    });
 
     function getProducts(paginate){
         const form = $('form.sidebar-filter').serialize();
@@ -50,7 +53,7 @@ $(function(){
                     '                <div class="card-img-top">' +
                     '                    <img src="' + getImage(product) + '" class="img-fluid mx-auto d-block" alt="Zdjęcie produktu">' +
                     '                </div>' +
-                    '                <div class="card-body text-center">' +
+                    '                <div class="card-body text-center bg-white">' +
                     '                    <h4 class="card-title">' +
                                             product.name +
                     '                    </h4>' +
@@ -58,9 +61,9 @@ $(function(){
                     '                        <i>PLN ' + product.price + '</i>' +
                     '                    </h5>' +
                     '                </div>' +
-                    '                <button class="btn btn-success btn-sm add-cart-button"' + getDisabled() + ' data-id="' + product.id + '">' +
+                    '                <button class="btn btn-success btn-sm add-cart-btn"' + getDisabled() + ' data-id="' + product.id + '">' +
                     '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
-                    '                </button>' +
+                    '                </button>'
                     '            </div>' +
                     '        </div>';
                 $('div#products-wrapper').append(html);
@@ -81,4 +84,12 @@ $(function(){
         }
         return '';
     }
+
+    $('button.test').click(function(){
+        console.log('test')
+    })
+
+    $('button.add-cart-btn').click(function() {
+        console.log('test');
+    });
 })
