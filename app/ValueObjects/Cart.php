@@ -76,4 +76,9 @@ class Cart
             return $product->id == $item->getProductId();
         };
     }
+
+    public function isEmpty()
+    {
+        return count($this->getItems()) === 0;
+    }
 }
