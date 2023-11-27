@@ -18,6 +18,7 @@ class UserController extends Controller
     {
         return view("users.index",[
             "users"=> User::paginate(5)
+
         ]);
     }
 
@@ -89,4 +90,22 @@ class UserController extends Controller
             ])->setStatusCode(500);
         }
     }
+
+    // public function search(Request $request)
+    // {
+    //     $query = $request->input('user_search');
+    
+    //     $users = User::when($query, function ($queryBuilder) use ($query) {
+    //             $keywords = explode(' ', $query);
+    //             foreach ($keywords as $keyword) {
+    //                 $queryBuilder->where(function ($subquery) use ($keyword) {
+    //                     $subquery->where('name', 'like', '%' . $keyword . '%')
+    //                              ->orWhere('surname', 'like', '%' . $keyword . '%');
+    //                 });
+    //             }
+    //         })
+    //         ->paginate(5);
+    // }
+    
+    
 }

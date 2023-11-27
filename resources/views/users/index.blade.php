@@ -9,6 +9,11 @@
         </div>
     </div>
     <table class="table table-striped">
+        {{-- <div class="row">
+            <form class="d-flex" id="searchForm" action="{{ route('users.search') }}" method="GET">
+                <input id="search_input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
+            </form>
+        </div> --}}
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -20,7 +25,7 @@
             <th scope="col">{{ __('shop.user.fields.actions') }}</th>
         </tr>
         </thead>
-        <tbody>
+        <tbody id="item_wrapper">
             @foreach ($users as $user)
                 <tr>
                     <th scope="row">{{ $user->id }}</th>
@@ -56,4 +61,5 @@
 @endsection
 @section('js-files')
     @vite('resources/js/delete.js');
+    {{-- @vite('resources/js/search.js'); --}}
 @endsection

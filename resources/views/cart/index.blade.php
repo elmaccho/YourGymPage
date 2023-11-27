@@ -14,9 +14,11 @@
                 <div class="col-lg-10 offset-lg-1">
                     <div class="cart_container">
                         <div class="cart_title">Shopping Cart<small> ({{ $cart->getItems()->count() }}) </small></div>
+                        <form action="{{ route('orders.store') }}" method="POST" id="order-form">
+                            @csrf
                         <div class="cart_items">
+                            <ul class="cart_list">
                             @foreach ($cart->getItems() as $item)
-                                <ul class="cart_list">
                                     <li class="cart_item clearfix">
                                         <div class="cart_item_image">
                                             @if (!is_null($item->getImagePath()))
@@ -43,14 +45,14 @@
                                                 <div class="cart_item_text">{{ $item->getSum() }}</div>
                                             </div>
                                             <div class=cart_info_col">
-                                                <button class="btn btn-danger btn-sm delete " data-id="{{ $item->getProductId() }}">
+                                                <button type="button" class="btn btn-danger btn-sm delete " data-id="{{ $item->getProductId() }}">
                                                     <i class="fa-solid fa-trash-can"></i>
                                                 </button>
                                             </div>
                                         </div>
                                     </li>
+                                    @endforeach
                                 </ul>
-                            @endforeach
                         </div>
                         <div class="order_total">
                             <div class="order_total_content text-md-right">
@@ -60,8 +62,9 @@
                         </div>
                         <div class="cart_buttons"> 
                             <a href="/" type="button" class="button cart_button_clear">Powrót do sklepu</a> 
-                            <button type="button" class="button cart_button_checkout">Zapłać</button> </div>
-                    </div>
+                            <button type="submit" class="button cart_button_checkout" {{ !$cart->hasItems() ? 'disabled': '' }}>Zapłać</button> </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>

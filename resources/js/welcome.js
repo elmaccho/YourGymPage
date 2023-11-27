@@ -8,7 +8,6 @@ $(function(){
     $('a#filter-btn').click(function(event){
         event.preventDefault();
         getProducts($('a.products-actual-count').first().text());
-        console.log('chuj')
     })
 
     $('button.add-cart-btn').click(function (event) {
