@@ -24,6 +24,7 @@
                         <th scope="col">#</th>
                         <th scope="col">Ilość</th>
                         <th scope="col">Cena [PLN]</th>
+                        <th scope="col">Status zamówienia</th>
                         <th scope="col">Produkty</th>
                     </tr>
                 </thead>
@@ -34,6 +35,13 @@
                             <td scope="row">{{ $order->id }}</td>
                             <td scope="row">{{ $order->quantity }}</td>
                             <td scope="row">{{ $order->price }}</td>
+                            <td scope="row">
+                                @if ($order->payment)
+                                    {{ $order->payment->status }}
+                                @else
+                                    Brak informacji o płatności
+                                @endif
+                            </td>
                             <td scope="row">
                             @foreach ($order->products as $product)
                                 <ul>

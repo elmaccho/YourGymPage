@@ -18,7 +18,6 @@ class UserController extends Controller
     {
         return view("users.index",[
             "users"=> User::paginate(5)
-
         ]);
     }
 

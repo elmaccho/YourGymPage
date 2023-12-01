@@ -5,6 +5,7 @@ use App\Http\Controllers\HelloWorldController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
@@ -38,10 +39,10 @@ Route::middleware(['auth', 'verified'])->group(function(){
             'destroy',
         ]);
 
-        // Route::get('/', [UserController::class, 'search'])->name('users.search');
-
     });
     
+
+    Route::get('/cart/info', [CartController::class, 'info'])->name('cart.info');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
@@ -52,13 +53,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });
 
-// Route::get('/products', [ProductController::class, 'index'])->name("products.index")->middleware('auth');
-// Route::post('/products', [ProductController::class, 'store'])->name("products.store")->middleware('auth');
-// Route::get('/products/create', [ProductController::class, 'create'])->name("products.create")->middleware('auth');
-// Route::get('/products/edit/{product}', [ProductController::class, 'edit'])->name("products.edit")->middleware('auth');
-// Route::get('/products/show/{product}', [ProductController::class, 'show'])->name("products.show")->middleware('auth');
-// Route::post('/products/{product}', [ProductController::class, 'update'])->name("products.update")->middleware('auth');
-// Route::delete('/products/{product}', [ProductController::class, 'destroy'])->name("products.destroy")->middleware('auth');
-
+Route::post('/payment/status', [PaymentController::class, 'status']);
+// Route::post('/orders', [HomeController::class, 'index'])->name('home');
 
 Auth::routes(['verify' => true]);

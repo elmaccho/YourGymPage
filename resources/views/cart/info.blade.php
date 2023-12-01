@@ -51,11 +51,6 @@
                                                             <div class="cart_item_title">Total</div>
                                                             <div class="cart_item_text">{{ $item->getSum() }} zł</div>
                                                         </div>
-                                                        <div class=cart_info_col">
-                                                            <button type="button" class="btn btn-danger btn-sm delete " data-id="{{ $item->getProductId() }}">
-                                                                <i class="fa-solid fa-trash-can"></i>
-                                                            </button>
-                                                        </div>
                                                     </div>
                                             </li>
 
@@ -70,11 +65,41 @@
                                     </div>
                                 </div>
                                 <div class="cart_buttons"> 
-                                    <a href="/" type="button" class="button cart_button_clear">Powrót do sklepu</a> 
-                                    <a href="{{ route('cart.info') }}" class="button cart_button_checkout" {{ !$cart->hasItems() ? 'disabled': '' }}>Przejdź do płatności</a> </div>
+                                    <a href="{{ route('cart.index') }}" type="button" class="button cart_button_clear">Wróć</a> 
+                                    <button class="button cart_button_checkout" {{ !$cart->hasItems() ? 'disabled': '' }}>Kupuję i płacę</button> </div>
                                 </div>
                             </form>
                         @endif
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h2>Formularz danych do wysyłki</h2>
+                    <form>
+                        {{ method_field('PUT') }}
+                        @csrf
+                        <div class="mb-3">
+                            <label for="inputImie" class="form-label">Imię</label>
+                            <input type="text" class="form-control" id="inputImie" placeholder="Wprowadź swoje imię" required value="{{ $user->name }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputNazwisko" class="form-label">Nazwisko</label>
+                            <input type="text" class="form-control" id="inputNazwisko" placeholder="Wprowadź swoje nazwisko" required value="{{ $user->surname }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputAdres" class="form-label">Adres</label>
+                            <input type="text" class="form-control" id="inputAdres" placeholder="Wprowadź swój adres" required value="{{ $user->address->city }} {{ $user->address->street_no }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputMiasto" class="form-label">Miasto</label>
+                            <input type="text" class="form-control" id="inputMiasto" placeholder="Wprowadź swoje miasto" required value="{{ $user->address->city }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="inputKodPocztowy" class="form-label">Kod pocztowy</label>
+                            <input type="text" class="form-control" id="inputKodPocztowy" placeholder="Wprowadź kod pocztowy" required value="{{ $user->address->zip_code }}">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Wyślij</button>
+                    </form>
                 </div>
             </div>
         </div>

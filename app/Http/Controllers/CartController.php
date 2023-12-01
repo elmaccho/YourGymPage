@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateUserRequest;
 use App\ValueObjects\CartDto;
+use App\ValueObjects\CartItem;
 use App\ValueObjects\CartItemDto;
 use App\Models\Product;
+use App\Models\User;
 use App\ValueObjects\Cart;
 use Exception;
 use Illuminate\Contracts\View\View;
@@ -12,6 +15,8 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+
 
 class CartController extends Controller
 {
@@ -24,6 +29,16 @@ class CartController extends Controller
     {
         return view('cart.index', [
             'cart'=> Session::get('cart', new Cart())
+        ]);
+    }
+
+    public function info(User $user): View
+    {
+        $user = Auth::user();
+
+        return view('cart.info', [
+            'cart'=> Session::get('cart', new Cart()),
+            'user'=> $user
         ]);
     }
 
