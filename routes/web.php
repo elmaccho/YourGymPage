@@ -42,7 +42,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
     });
     
 
-    Route::get('/cart/info', [CartController::class, 'info'])->name('cart.info');
+    Route::get('/cart/info', [CartController::class, 'info'])->name('cart.info')->middleware('checkCartContent');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
     Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
@@ -54,6 +54,6 @@ Route::middleware(['auth', 'verified'])->group(function(){
 });
 
 Route::post('/payment/status', [PaymentController::class, 'status']);
-// Route::post('/orders', [HomeController::class, 'index'])->name('home');
+
 
 Auth::routes(['verify' => true]);

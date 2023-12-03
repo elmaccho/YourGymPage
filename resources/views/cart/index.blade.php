@@ -17,14 +17,9 @@
                         @if ($cart->isEmpty())
                             <p>Koszyk jest pusty</p>
                         @else
-                            <form action="{{ route('orders.store') }}" method="POST" id="order-form">
-                                @csrf
                                 <div class="cart_items">
                                     <ul class="cart_list">
                                         @foreach ($cart->getItems() as $item)
-                                            @if ($cart)
-                                                
-                                            @endif
                                             <li class="cart_item clearfix">
                                                 <div class="cart_item_image">
                                                         @if (!is_null($item->getImagePath()))
@@ -73,7 +68,6 @@
                                     <a href="/" type="button" class="button cart_button_clear">Powrót do sklepu</a> 
                                     <a href="{{ route('cart.info') }}" class="button cart_button_checkout" {{ !$cart->hasItems() ? 'disabled': '' }}>Przejdź do płatności</a> </div>
                                 </div>
-                            </form>
                         @endif
                 </div>
             </div>
