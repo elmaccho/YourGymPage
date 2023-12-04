@@ -2,18 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UpdateUserRequest;
-use App\ValueObjects\CartDto;
-use App\ValueObjects\CartItem;
-use App\ValueObjects\CartItemDto;
+use App\Http\Requests\OrderAddressRequest;
+use App\Models\Order;
+use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
+use App\Models\UserOrderData;
 use App\ValueObjects\Cart;
 use Exception;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
 
@@ -79,4 +77,14 @@ class CartController extends Controller
             ])->setStatusCode(500);
         }
     }
+    // public function userOrderData(OrderAddressRequest $request, Payment $payment)
+    // {
+    //     $userOrderData = new UserOrderData($request->validated()['order']);
+    //     $userOrderData->user_id = Auth::id();
+    //     $userOrderData = new Payment();
+    //     $userOrderData->order_id = $payment->order_id;
+    //     $userOrderData->save();
+    //     return redirect(route("users.index"))->with('status', __('shop.user.status.update.success'));
+
+    // }
 }

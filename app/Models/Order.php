@@ -32,4 +32,8 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class);
     }
+    public function userOrderData(): HasOne
+    {
+        return $this->hasOne(UserOrderData::class);
+    }
 }

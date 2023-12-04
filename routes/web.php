@@ -42,8 +42,8 @@ Route::middleware(['auth', 'verified'])->group(function(){
     });
     
 
-    Route::get('/cart/info', [CartController::class, 'info'])->name('cart.info')->middleware('checkCartContent');
     Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+    Route::get('/cart/info', [CartController::class, 'info'])->name('cart.info')->middleware('checkCartContent');
     Route::post('/cart/{product}', [CartController::class, 'store'])->name('cart.store');
     Route::delete('/cart/{product}', [CartController::class, 'destroy'])->name('cart.destroy');
 
