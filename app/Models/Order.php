@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
@@ -32,8 +33,8 @@ class Order extends Model
     {
         return $this->belongsToMany(Product::class);
     }
-    public function userOrderData(): HasOne
+    public function userOrderData(): HasMany
     {
-        return $this->hasOne(UserOrderData::class);
+        return $this->HasMany(UserOrderData::class);
     }
 }

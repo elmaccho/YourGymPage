@@ -6,6 +6,7 @@ use App\Enums\PaymentStatus;
 use App\Http\Requests\OrderAddressRequest;
 use App\Models\Order;
 use App\Models\Payment;
+use App\Models\User;
 use App\Models\UserOrderData;
 use App\ValueObjects\Cart;
 use Devpark\Transfers24\Exceptions\RequestException;
@@ -13,7 +14,6 @@ use Devpark\Transfers24\Exceptions\RequestExecutionException;
 use Devpark\Transfers24\Requests\Transfers24;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -31,8 +31,13 @@ class OrderController extends Controller
      */
     public function index(): View
     {
+        $user = Auth::user();
+
+        $userOrderData = $user->userOrderData;
+
         return view("orders.index", [
-            'orders' => Order::where('user_id', Auth::id())->paginate(15)
+            'orders' => Order::where('user_id', $user->id)->paginate(15),
+            'userOrderData' => $userOrderData
         ]);
     }
 
@@ -64,7 +69,6 @@ class OrderController extends Controller
             $payment->order_id = $order->id;
             $payment->save();
             return $this->paymentTransaction($order);
-    
         }
     
         return back();
