@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg px-5">
         <div class="col col-nav">
-            <h1 class="brand-name"><strong><em>YourGym</em></strong></h1>
+            <a href="/main"><h1 class="brand-name"><strong><em>YourGym</em></strong></h1></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="navbar-icon-fa fa-solid fa-bars"></i>
             </button>
@@ -155,13 +155,7 @@
             </div>
 
             <div class="pass-start m-4">
-                <form action="">
-                    <span class="text-light">Start karnetu:</span>
-                    <span><input class="pass-start-input" type="date" name="" id=""></span>
-                </form>
-                <a href="#">
-                    <button class="btn buy-pass-btn">KUP KARNET</button>
-                </a>
+                <a href="{{ route('main.pass') }}" class="btn buy-pass-btn">KUP KARNET</a>
             </div>
         </div>
 

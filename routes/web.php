@@ -25,6 +25,9 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [WelcomeController::class, 'index']);
 Route::get('/main', [MainController::class,'index'])->name('main.index');
+Route::get('/main/pass', [MainController::class,'pass'])->name('main.pass');
+
+
 
 Route::middleware(['auth', 'verified'])->group(function(){
 
@@ -49,6 +52,7 @@ Route::middleware(['auth', 'verified'])->group(function(){
 
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::post('/orders', [OrderController::class, 'store'])->name('orders.store');
+
 
     Route::get('/home', [HomeController::class, 'index'])->name('home');
 });

@@ -229,6 +229,9 @@
     /* background-color: gold; */
 }
 
+.pass-container{
+    padding-top: 120px;
+}
 
 @media screen and (max-width: 1124px) {
     #offert{

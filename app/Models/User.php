@@ -6,6 +6,7 @@ namespace App\Models;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -67,5 +68,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function userOrderData(): HasOne
     {
         return $this->hasOne(UserOrderData::class);
+    }
+
+    public function PassType(): BelongsTo
+    {
+        return $this->belongsTo(PassType::class);
     }
 }
