@@ -27,7 +27,8 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/main', [MainController::class,'index'])->name('main.index');
 Route::get('/main/pass', [MainController::class,'pass'])->name('main.pass');
-Route::post('/main/pass', [MainController::class,'verifyUser'])->name('main.verifyUser');
+Route::post('/main/pass', [MainController::class, 'store'])->name('main.store');
+
 
 
 

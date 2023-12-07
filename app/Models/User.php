@@ -65,6 +65,10 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return !is_null($this->address);
     }
+    public function hasPass():bool
+    {
+        return !is_null($this->pass_type_id);
+    }
     public function userOrderData(): HasOne
     {
         return $this->hasOne(UserOrderData::class);

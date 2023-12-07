@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->foreignId('pass_type_id')->constrained('pass_types')->after('phone_number')->nullable();
+        Schema::create('user_pass_type', function (Blueprint $table) {
+            $table->id();
+            $table->date('purchase_date');
+
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('pass_type_id')->constrained();
+            $table->timestamps();
         });
     }
 
@@ -21,8 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('pass_type_id');
-        });
+        Schema::dropIfExists('user_pass_type');
     }
 };
