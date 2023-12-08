@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PassRequest;
 use App\Models\PassType;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -18,22 +19,30 @@ class MainController extends Controller
         return view('main.index');
     }
 
-    public function pass(User $user)
+    public function pass()
     {
         $passTypes = PassType::all();
+        $user = Auth::user();
 
         return view('main.pass', [
-            'passTypes' => $passTypes,
-            'user' => $user
+            'user' => $user,
+            'passTypes'=> $passTypes
         ]);
     }
-    public function store(PassRequest $request, User $user)
-    {
-        $user->fill($request->validated());
+public function update(PassRequest $request)
+{
+    $user = User::find(Auth::id());
+    $passType = PassType::find($request->validated()['passType']);
+    $passStartDate = Carbon::parse($request->validated()['passStartDate']);
+    $passEndDate = $passStartDate->copy()->addDays($passType->duration);
 
-        $user->save();
-        
+    $user->update([
+        'pass_type_id' => $passType->id,
+        'pass_start_date' => $passStartDate,
+        'pass_end_date' => $passEndDate,
+    ]);
 
-        return redirect(route("main.pass"))->with('status', 'zakupiono karnet!');
-    }
+    return redirect(route("main.pass"))->with('status', __('shop.user.status.update.success'));
+}
+
 }

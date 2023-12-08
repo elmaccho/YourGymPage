@@ -175,7 +175,7 @@
             <button type="submit" class="btn btn-primary">Zatwierdź</button>
             </form>
         </div> --}}
-
+        @include('helpers.flash-messages')
         @guest
             <div class="">
                 <span class="h1">By wykupic karnet musisz posiadać konto</span>
@@ -191,35 +191,22 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p>Cześć <strong>{{ Auth::user()->name }}</strong>! Wybierz swój rodzaj karnetu</p>
-                            <form action="{{ route('main.store', $user->id) }}">
-                                {{ method_field('PUT') }}
+                            <form action="{{ route('main.update') }}" method="post">
                                 @csrf
                                 <div class="mb-3">
                                     <label for="typ-karnetu" class="form-label" hidden>Typ karnetu</label>
-                                    <select class="form-select @error('passType') is-invalid @enderror" id="typ-karnetu" name="passType" required>
-                                            <option value="" disabled selected>Wybierz typ karnetu</option>
+                                    <select class="form-select" id="typ-karnetu" name="passType" required>
+                                        <option value="" disabled selected>Wybierz typ karnetu</option>
                                         @foreach ($passTypes as $passtype)
                                             <option value="{{ $passtype->id }}">{{ $passtype->name }}</option>
                                         @endforeach
                                     </select>
-
-                                    @error('passType')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="pass-start-date" class="form-label">Start karnetu:</label>
-                                    <input type="date" name="passStartDate" id="pass-start-date" class="form-control @error('passStartDate') is-invalid @enderror" required>
-
-                                    @error('passStartDate')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
+                                    <label for="start-date" class="form-label">Data rozpoczęcia</label>
+                                    <input type="date" class="form-control" name="passStartDate" id="start-date">
                                 </div>
-                
+
                                 <button type="submit" class="btn btn-primary mt-3">Zatwierdź</button>
                             </form>
                         </div>

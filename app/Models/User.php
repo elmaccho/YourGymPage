@@ -13,6 +13,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -29,6 +30,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'email',
         'role',
         'password',
+        'pass_type_id',
+        'pass_start_date',
+        'pass_end_date'
     ];
 
     /**
@@ -65,17 +69,17 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return !is_null($this->address);
     }
-    public function hasPass():bool
-    {
-        return !is_null($this->pass_type_id);
-    }
     public function userOrderData(): HasOne
     {
         return $this->hasOne(UserOrderData::class);
     }
 
-    public function PassType(): BelongsTo
+    public function passType(): BelongsTo
     {
-        return $this->belongsTo(PassType::class);
+        return $this->BelongsTo(PassType::class);
+    }
+    public function hasPassType(): bool
+    {
+        return !is_null($this->passType);
     }
 }

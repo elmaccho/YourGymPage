@@ -11,7 +11,7 @@ class PassRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,7 @@ class PassRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'passType' => 'required',
+            'passType' => 'required|nullable|integer|min:0',
             'passStartDate' => 'required|date|after:today'
         ];
     }
