@@ -216,7 +216,14 @@
                     </div>
                 </div>
             @else
+            <div class="d-flex flex-column">
                 <p>Cześć <strong>{{ Auth::user()->name }}</strong>! Twój rodzaj karnetu to: {{ Auth::user()->PassType->name }}</p>
+                @if ($user->startDatePass() > 0)
+                    <p>Karnet będzie ważny za {{ $startDatePass }} dni.</p>
+                @else
+                    <p>Karnet straci ważność za {{ $czasDoZakonczenia }} dni.</p>
+                @endif
+            </div>
             @endif
         @endguest
 

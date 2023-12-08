@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 
+use Carbon\Carbon;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -82,4 +83,18 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return !is_null($this->passType);
     }
+    public function startDatePass()
+    {
+        $todayDate = Carbon::now();
+        $startDate = $todayDate->diffInDays($this->pass_start_date, false);
+        return $startDate;
+    }
+
+    public function endDatePass()
+    {
+        $todayDate = Carbon::now();
+        $endDate = $todayDate->diffInDays($this->pass_end_date, false);
+        return $endDate;
+    }
+
 }
