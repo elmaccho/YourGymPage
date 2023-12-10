@@ -7,14 +7,19 @@ use App\Models\PassType;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\VerifiesEmails;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use App\Services\PassSe;
+use App\Services\PassService;
 
 class MainController extends Controller
 {
     use VerifiesEmails;
+
+    protected $passService;
+    public function __construct(PassService $passService)
+    {
+        $this->passService = $passService;
+    }
     public function index()
     {
         return view('main.index');
@@ -22,18 +27,21 @@ class MainController extends Controller
 
     public function pass(User $user)
     {
-        $passTypes = PassType::all();
         $user = Auth::user();
-        $startDatePass = Auth::startDatePass();
-        $endDatePass = Auth::endDatePass();
-    
-        // Dodaj obliczenia do danych przekazywanych do widoku
-        return view('main.pass', [
-            'user' => $user,
-            'passTypes'=> $passTypes,
-            'startDate' => $startDatePass,
-            'endDate' => $user->endDatePass(),
-        ]);
+        $passTypes = PassType::all();
+        $today = Carbon::today();
+        $passStartDate = Carbon::parse($user->pass_start_date);
+        $passEndDate = Carbon::parse($user->pass_end_date);
+        $passCalculations = $this->passService->calculateRemainingDays($passStartDate, $passEndDate);
+
+        return view('main.pass', compact(
+            'user', 
+            'passTypes', 
+            'passStartDate', 
+            'passEndDate', 
+            'today', 
+            'passCalculations'
+        ));
     }
     public function update(PassRequest $request)
     {

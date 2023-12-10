@@ -215,19 +215,40 @@
                         </div>
                     </div>
                 </div>
-            @else
-            <div class="d-flex flex-column">
-                <p>Cześć <strong>{{ Auth::user()->name }}</strong>! Twój rodzaj karnetu to: {{ Auth::user()->PassType->name }}</p>
-                @if ($user->startDatePass() > 0)
-                    <p>Karnet będzie ważny za {{ $startDatePass }} dni.</p>
                 @else
-                    <p>Karnet straci ważność za {{ $czasDoZakonczenia }} dni.</p>
-                @endif
-            </div>
+                <div class="d-flex flex-column">
+                <p>Cześć <strong>{{ Auth::user()->name }}</strong>! Twój rodzaj karnetu to: {{ Auth::user()->PassType->name }}</p>
+
+                    @if ($today < $passStartDate)
+                        @if ($passCalculations['remainingToPass'] < 0)
+                            <p>Karnet będzie ważny za {{ $passCalculations['remainingToPass'] }} dni.</p>
+                        @else
+                            <p id="passCountdown">Karnet będzie ważny za 
+                                <span class="passHoursCountdown">
+                                    {{ $passCalculations['remainingHours'] }}
+                                </span> godzin 
+                                <span class="passMinutesCountdown">
+                                    {{ $passCalculations['remainingMinutes'] }}
+                                </span> minut i 
+                                <span class="passSecondsCountdown">
+                                    {{ $passCalculations['remainingSeconds'] }}
+                                </span>sekund.
+                            </p>
+                        @endif
+                    @else
+                        <p>Karnet straci ważność za {{ $passCalculations['remainingDays'] }} dni.</p>
+                    @endif
+                </div>
             @endif
         @endguest
 
 
     </div>
     
-@vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/main.css', 'resources/js/main.js'])
+@vite([
+    'resources/sass/app.scss', 
+    'resources/js/app.js', 
+    'resources/css/main.css', 
+    'resources/js/main.js',
+    'resources/js/passCountDown.js'
+    ])

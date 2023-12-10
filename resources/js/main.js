@@ -4,7 +4,6 @@ const navbarToggler = document.querySelector('.navbar-toggler');
 const maxWidthForScript = 991.11;
 
 
-
 for (const navItem of navItems) {
   navItem.addEventListener('click', () => {
     if (window.innerWidth <= maxWidthForScript) {
