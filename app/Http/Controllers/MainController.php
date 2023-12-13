@@ -25,24 +25,31 @@ class MainController extends Controller
         return view('main.index');
     }
 
-    public function pass(User $user)
+    public function pass()
     {
-        $user = Auth::user();
-        $passTypes = PassType::all();
-        $today = Carbon::today();
-        $passStartDate = Carbon::parse($user->pass_start_date);
-        $passEndDate = Carbon::parse($user->pass_end_date);
-        $passCalculations = $this->passService->calculateRemainingDays($passStartDate, $passEndDate);
+        if(Auth::check()) {
+            $user = Auth::user();
 
-        return view('main.pass', compact(
-            'user', 
-            'passTypes', 
-            'passStartDate', 
-            'passEndDate', 
-            'today', 
-            'passCalculations'
-        ));
+            $passStartDate = Carbon::parse($user->pass_start_date);
+            $passEndDate = Carbon::parse($user->pass_end_date);
+            $passCalculations = $this->passService->calculateRemainingDays($passStartDate, $passEndDate);
+    
+            $passTypes = PassType::all();
+            $today = Carbon::today();
+    
+            return view('main.pass', compact(
+                'user', 
+                'passTypes', 
+                'passStartDate', 
+                'passEndDate', 
+                'today', 
+                'passCalculations'
+            ));
+        } else {
+            return redirect()->route('login')->with('status', 'By wykupić karnet musisz być zalogowany!');
+        }
     }
+    
     public function update(PassRequest $request)
     {
         $user = User::find(Auth::id());
