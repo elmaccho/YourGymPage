@@ -10,6 +10,7 @@ use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Services\PassService;
+use Exception;
 
 class MainController extends Controller
 {
@@ -36,6 +37,16 @@ class MainController extends Controller
     
             $passTypes = PassType::all();
             $today = Carbon::today();
+
+            if($today > $passEndDate){
+                User::where('id', $user->id)->update([
+                    'pass_start_date' => null,
+                    'pass_end_date' => null,
+                    'pass_type_id' => null,
+                ]);
+
+                return view('main.pass');
+            }
     
             return view('main.pass', compact(
                 'user', 
@@ -46,24 +57,29 @@ class MainController extends Controller
                 'passCalculations'
             ));
         } else {
-            return view('main.pass');
+            return redirect(route("main.pass"));
         }
     }
     
     public function update(PassRequest $request)
     {
-        $user = User::find(Auth::id());
-        $passType = PassType::find($request->validated()['passType']);
-        $passStartDate = Carbon::parse($request->validated()['passStartDate']);
-        $passEndDate = $passStartDate->copy()->addDays($passType->duration);
+        try{
+            $user = User::find(Auth::id());
+            $passType = PassType::find($request->validated()['passType']);
+            $passStartDate = Carbon::parse($request->validated()['passStartDate']);
+            $passEndDate = $passStartDate->copy()->addDays($passType->duration);
+    
+            $user->update([
+                'pass_type_id' => $passType->id,
+                'pass_start_date' => $passStartDate,
+                'pass_end_date' => $passEndDate,
+            ]);
 
-        $user->update([
-            'pass_type_id' => $passType->id,
-            'pass_start_date' => $passStartDate,
-            'pass_end_date' => $passEndDate,
-        ]);
-
-        return redirect(route("main.pass"))->with('status', __('shop.user.status.update.success'));
+            return redirect(route("main.pass"))->with('status', 'Zakupiono karnet!');
+            
+        } catch (Exception $e){
+            return response()->json(['error' => 'Coś poszło nie tak.'], 500);
+        }
     }
 
 }

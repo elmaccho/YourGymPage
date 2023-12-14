@@ -56,7 +56,7 @@
             Aby wykupić karnet musisz być zalogowany! <br>
 
                 <a class="nav-link fs-4 text-dark" href="{{ route('login') }}">Zaloguj się</a>
-lub
+                lub
                 <a class="nav-link fs-4 text-dark" href="{{ route('register') }}">Zarejestruj się</a>
 
             @else
@@ -92,26 +92,40 @@ lub
                     @else
                     <div class="d-flex flex-column">
                     <p>Cześć <strong>{{ Auth::user()->name }}</strong>! Twój rodzaj karnetu to: {{ Auth::user()->PassType->name }}</p>
-        
-                                @if ($today < $passStartDate)
-                                    @if ($passCalculations['remainingToPass'] < 0)
-                                        <p>Karnet będzie ważny za {{ $passCalculations['remainingToPass'] }} dni.</p>
-                                    @else
-                                        <p id="passCountdown">Karnet będzie ważny za 
-                                            <span class="passHoursCountdown">
-                                                {{ $passCalculations['remainingHours'] }}
-                                            </span> godzin 
-                                            <span class="passMinutesCountdown">
-                                                {{ $passCalculations['remainingMinutes'] }}
-                                            </span> minut i 
-                                            <span class="passSecondsCountdown">
-                                                {{ $passCalculations['remainingSeconds'] }}
-                                            </span>sekund.
-                                        </p>
-                                    @endif
+                        @if ($today < $passStartDate)
+                            @if ($passCalculations['remainingDays'] > 0)
+                                    <p>Karnet będzie ważny za {{ $passCalculations['remainingDays'] }} dni.</p>
                                 @else
-                                    <p>Karnet straci ważność za {{ $passCalculations['remainingDays'] }} dni.</p>
-                                @endif
+                                    <p id="passCountdown">Karnet będzie ważny za 
+                                        <span class="passHoursCountdown">
+                                            {{ $passCalculations['remainingHours'] }}
+                                        </span> godzin 
+                                        <span class="passMinutesCountdown">
+                                            {{ $passCalculations['remainingMinutes'] }}
+                                        </span> minut i 
+                                        <span class="passSecondsCountdown">
+                                            {{ $passCalculations['remainingSeconds'] }}
+                                        </span>sekund.
+                                    </p>
+                            @endif
+
+                        @elseif ($today >= $passStartDate)
+                            @if ($passCalculations['remainingDays'] > 0)
+                                    <p>Karnet będzie ważny jeszcze przez: {{ $passCalculations['remainingDays'] }} dni.</p>
+                                @else
+                                    <p id="passCountdown">Karnet będzie ważny jeszcze przez:
+                                        <span class="passHoursCountdown">
+                                            {{ $passCalculations['remainingHours'] }}
+                                        </span> godzin 
+                                        <span class="passMinutesCountdown">
+                                            {{ $passCalculations['remainingMinutes'] }}
+                                        </span> minut i 
+                                        <span class="passSecondsCountdown">
+                                            {{ $passCalculations['remainingSeconds'] }}
+                                        </span>sekund.
+                                    </p>
+                            @endif
+                        @endif
                     </div>
                 @endif
         @endguest
