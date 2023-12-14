@@ -11,6 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,8 +30,6 @@ Route::get('/main', [MainController::class,'index'])->name('main.index');
 Route::get('/main/pass', [MainController::class,'pass'])->name('main.pass');
 
 Route::post('/main/pass', [MainController::class, 'update'])->name('main.update');
-
-
 
 Route::middleware(['auth', 'verified'])->group(function(){
 

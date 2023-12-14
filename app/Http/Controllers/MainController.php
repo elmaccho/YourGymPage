@@ -46,7 +46,7 @@ class MainController extends Controller
                 'passCalculations'
             ));
         } else {
-            return redirect()->route('login')->with('status', 'By wykupić karnet musisz być zalogowany!');
+            return view('main.pass');
         }
     }
     

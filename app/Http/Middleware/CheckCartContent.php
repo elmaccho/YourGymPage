@@ -22,7 +22,6 @@ class CheckCartContent
         $cart = Session::get('cart');
 
         if ($cart instanceof Cart && $cart->hasItems()) {
-            // Koszyk ma zawartość
             return $next($request);
         }
 
