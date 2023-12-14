@@ -11,7 +11,7 @@
 <body>
     <nav class="navbar navbar-expand-lg px-5">
         <div class="col col-nav">
-            <a href="/main"><h1 class="brand-name"><strong><em>YourGym</em></strong></h1></a>
+            <a class="btn" href="/main"><h1 class="brand-name"><strong><em>YourGym</em></strong></h1></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="navbar-icon-fa fa-solid fa-bars"></i>
             </button>
@@ -29,7 +29,7 @@
                         <a class="nav-link fs-4" href="#offert">Oferta</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link fs-4" href="#">Kontakt</a>
+                        <a class="nav-link fs-4" href="#contactus">Kontakt</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fs-4" href="{{ url('/') }}">Sklep</a>
@@ -46,7 +46,7 @@
                                     {{ Auth::user()->name }}
                                 </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Profil</a></li>
+                                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profil</a></li>
 
                                 <li><a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('main.nav.logout') }}</a></li>
     

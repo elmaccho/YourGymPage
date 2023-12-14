@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\UserProfileController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +29,11 @@ Route::get('/', [WelcomeController::class, 'index']);
 
 Route::get('/main', [MainController::class,'index'])->name('main.index');
 Route::get('/main/pass', [MainController::class,'pass'])->name('main.pass');
-
 Route::post('/main/pass', [MainController::class, 'update'])->name('main.update');
 
+
 Route::middleware(['auth', 'verified'])->group(function(){
+    Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
 
     
 
