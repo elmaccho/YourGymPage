@@ -57,13 +57,12 @@ class MainController extends Controller
                 'passCalculations'
             ));
         } else {
-            return redirect(route("main.pass"));
+            return view('main.pass');
         }
     }
     
     public function update(PassRequest $request)
     {
-        try{
             $user = User::find(Auth::id());
             $passType = PassType::find($request->validated()['passType']);
             $passStartDate = Carbon::parse($request->validated()['passStartDate']);
@@ -76,10 +75,6 @@ class MainController extends Controller
             ]);
 
             return redirect(route("main.pass"))->with('status', 'Zakupiono karnet!');
-            
-        } catch (Exception $e){
-            return response()->json(['error' => 'Coś poszło nie tak.'], 500);
-        }
     }
 
 }
