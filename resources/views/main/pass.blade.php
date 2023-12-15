@@ -38,7 +38,7 @@
                                                 <input type="date" class="form-control" name="passStartDate" id="start-date">
                                             </div>
         
-                                            <a type="submit" class="btn btn-primary mt-3">Przejdź do płatności</a>
+                                            <button type="submit" class="btn btn-primary mt-3">Przejdź do płatności</button>
                                         </form>
                                     </div>
                                     <div class="col-md-6 card_container">

@@ -34,6 +34,7 @@ Route::post('/main/pass', [MainController::class, 'update'])->name('main.update'
 
 Route::middleware(['auth', 'verified'])->group(function(){
     Route::get('/profile', [UserProfileController::class, 'index'])->name('profile.index');
+    Route::put('/profile/{user}', [UserProfileController::class, 'update'])->name('profile.update');
 
     
 

@@ -33,51 +33,118 @@
             </div>
         </div>
     </nav>
+
+    @include('helpers.flash-messages')
+
     <div class="container profile-container">
         <div class="row">
-          <div class="col-md-4 text-center">
-            <img src="https://placekitten.com/150/150" alt="Profile" class="profile-image">
+          <div class="col-md-4 text-center profile-image-wrapper">
+            @if (!is_null($user->image_path))
+                    <img src="{{ asset('storage/'. $user->image_path) }}" alt="Profile" class="profile-image" data-bs-toggle="modal" data-bs-target="#zmianaZdjeciaModal">
+                @else
+                    <img src="{{ asset('storage/user/defaultUser.jpg') }}" alt="Profile" class="profile-image" data-bs-toggle="modal" data-bs-target="#zmianaZdjeciaModal">
+            @endif
+                <div class="profile-image-info">
+                    Zmień zdjęcie profilowe
+                </div>
           </div>
           <div class="col-md-8">
-            <h2>User Name</h2>
-            <p>Email: user@example.com</p>
-            <p>Location: City, Country</p>
-            <p>Joined: January 1, 2023</p>
+            <h2>{{ $user->name }}{{ $user->surname }}</h2>
+            <p>Email: {{ $user->email }}</p>
+            <p>Adres: {{ $user?->address?->city }} {{ $user?->address?->home_no }}, {{ $user?->address?->zip_code }}</p>
+            <p>Dołączono {{ $user->email_verified_at->format('d/m/Y') }}</p>
           </div>
         </div>
     
         <div class="row mt-4">
           <div class="col-md-12">
-            <h4>About Me</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla convallis libero nec mauris convallis, a fermentum elit vestibulum.</p>
-          </div>
-        </div>
-    
-        <div class="row mt-4">
-          <div class="col-md-12">
-            <h4>Additional Information</h4>
+            <h4>Informacje</h4>
             <table class="table">
               <tr>
-                <th scope="row">Age</th>
-                <td>25</td>
+                <th scope="row">Typ karnetu</th>
+                <td>
+                    @if ($user->pass_type_id == null)
+                            ----
+                        @else
+                            <strong>{{ $user->passType->name }}</strong>
+                    @endif
+                </td>
               </tr>
               <tr>
-                <th scope="row">Occupation</th>
-                <td>Web Developer</td>
-              </tr>
-              <tr>
-                <th scope="row">Interests</th>
-                <td>Programming, Traveling, Reading</td>
+                <th scope="row">Informacje o karnecie</th>
+                <td>
+                    @if ($today < $passStartDate)
+                        @if ($passCalculations['remainingDays'] > 0)
+                                <p>Karnet będzie ważny za {{ $passCalculations['remainingDays'] }} dni.</p>
+                            @else
+                                <p id="passCountdown">Karnet będzie ważny za 
+                                    <span class="passHoursCountdown">
+                                        {{ $passCalculations['remainingHours'] }}
+                                    </span> godzin 
+                                    <span class="passMinutesCountdown">
+                                        {{ $passCalculations['remainingMinutes'] }}
+                                    </span> minut i 
+                                    <span class="passSecondsCountdown">
+                                        {{ $passCalculations['remainingSeconds'] }}
+                                    </span>sekund.
+                                </p>
+                        @endif
+
+                        @elseif ($today >= $passStartDate)
+                            @if ($passCalculations['remainingDays'] > 0)
+                                    <p>Karnet będzie ważny jeszcze przez: {{ $passCalculations['remainingDays'] }} dni.</p>
+                                @else
+                                    <p id="passCountdown">Karnet będzie ważny jeszcze przez:
+                                        <span class="passHoursCountdown">
+                                            {{ $passCalculations['remainingHours'] }}
+                                        </span> godzin 
+                                        <span class="passMinutesCountdown">
+                                            {{ $passCalculations['remainingMinutes'] }}
+                                        </span> minut i 
+                                        <span class="passSecondsCountdown">
+                                            {{ $passCalculations['remainingSeconds'] }}
+                                        </span>sekund.
+                                    </p>
+                            @endif
+                    @endif
+                </td>
               </tr>
             </table>
           </div>
         </div>
     </div>
 
+
+    <div class="modal fade" id="zmianaZdjeciaModal" tabindex="-1" aria-labelledby="zmianaZdjeciaModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="zmianaZdjeciaModalLabel">Zmiana Zdjęcia Profilowego</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Zamknij"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="{{ route('profile.update', auth()->user()) }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
+                        <div class="mb-3">
+                            <label for="noweZdjecie" class="form-label">Wybierz Zdjęcie Profilowe</label>
+                            <input type="file" class="form-control" id="noweZdjecie" name="userProfile" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Anuluj</button>
+                            <button type="submit" class="btn btn-primary">Wyślij</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
       @vite([
         'resources/sass/app.scss', 
         'resources/js/app.js', 
-        'resources/css/main.css'
+        'resources/css/main.css',
+        'resources/css/profile.css'
         ])
 </body>
 </html>
