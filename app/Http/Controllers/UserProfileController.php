@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserProfileRequest;
+use App\Models\Order;
 use App\Models\User;
 use App\Services\PassService;
 use Carbon\Carbon;
@@ -25,6 +26,7 @@ class UserProfileController extends Controller
         $passStartDate = Carbon::parse($user->pass_start_date);
         $passEndDate = Carbon::parse($user->pass_end_date);
         $passCalculations = $this->passService->calculateRemainingDays($passStartDate, $passEndDate);
+        $orders = Order::where('user_id', $user->id)->paginate(15);
         $today = Carbon::today();
 
         return view ('profile.index', compact(
@@ -32,7 +34,8 @@ class UserProfileController extends Controller
             'passStartDate',
             'passEndDate',
             'passCalculations',
-            'today'
+            'today',
+            'orders'
         ));
     }
     public function update(UserProfileRequest $request, User $user)
@@ -42,7 +45,6 @@ class UserProfileController extends Controller
             $user->save();
             return redirect(route("profile.index"))->with('status', 'Zaktualizowano zdjęcie profilowe');
         } else {
-            // Dodaj obsługę sytuacji, gdy plik nie został przesłany lub jest nieprawidłowy
             return redirect()->back()->with('error', 'Błąd podczas przesyłania pliku');
         }
     }
