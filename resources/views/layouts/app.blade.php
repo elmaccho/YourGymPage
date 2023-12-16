@@ -59,25 +59,28 @@
                             <li class="nav-item dropdown navbar-r">
                                 <a class="nav-link dropdown-item" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
 
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-end user-dropdown" aria-labelledby="navbarDropdown">                                      
-                                    <a class="dropdown-item" href="{{ route('orders.index') }}">{{ __('Zamówienia') }}</a>
-
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('shop.nav.logout') }}
+                                <div class="dropdown-wrapper">
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        {{ Auth::user()->name }}
                                     </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
+    
+                                    <div class="dropdown-menu dropdown-menu-end user-dropdown" aria-labelledby="navbarDropdown">                                      
+                                        <a class="dropdown-item" href="{{ route('orders.index') }}">{{ __('Zamówienia') }}</a>
+    
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                           onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                            {{ __('shop.nav.logout') }}
+                                        </a>
+    
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                            @csrf
+                                        </form>
+                                    </div>
                                 </div>
                                 
                                 @can('isAdmin')
+                                <div class="dropdown-wrapper">
                                     <a id="navbarDropdown admin-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         Panel Administracyjny
                                     </a>
@@ -86,6 +89,7 @@
                                         <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('shop.nav.users') }}</a>
                                         <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('shop.nav.products') }}</a>
                                     </div>
+                                </div>
                                 @endcan
                             </li>
                         @endguest

@@ -1,18 +1,18 @@
-.user-dropdown{
-    transform: translateX(-150px);
-}
 .navbar-nav, .navbar-r{
     display: flex;
     flex-direction: row;
 }
-
+.dropdown-menu{
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.062) 0px 3px 8px;
+}
+.dropdown-wrapper{
+    position: relative;
+}
 @media screen and (max-width: 768px) {
     .nav-bar{
         display: flex;
         flex-direction: column;
-    }
-    .user-dropdown{
-        transform: unset;
     }
     .navbar-nav{
         width: 100%;

@@ -17,47 +17,36 @@
             </button>
         </div>
         <div class="col-0">
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav gap-5">
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="#home">Start</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="#">O nas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="#offert">Oferta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="#contactus">Kontakt</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link fs-4" href="{{ url('/') }}">Sklep</a>
-                    </li>
+            <div class="collapse navbar-collapse navbarNavDropdown" id="navbarNavDropdown">
+                <a class="nav-link fs-4 nav-item" href="#home">Start</a>
+                    
+                <a class="nav-link fs-4 nav-item" href="#">O nas</a>
+                    
+                <a class="nav-link fs-4 nav-item" href="#offert">Oferta</a>
+                    
+                <a class="nav-link fs-4 nav-item" href="#contactus">Kontakt</a>
+                    
+                <a class="nav-link fs-4 nav-item" href="{{ url('/') }}">Sklep</a>
     
-                    @guest
-                        <li class="nav-item main-btn">
-                            <a class="nav-link fs-4" href="{{ route('login') }}">Zaloguj się</a>
-                        </li>
-                    @else
+                @guest
+                    <a class="nav-link fs-4 nav-item" href="{{ route('login') }}">Zaloguj się</a>
+                @else
     
-                        <li class="nav-item dropdown main-btn">
-                                <a class="nav-link dropdown-toggle fs-4 " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    {{ Auth::user()->name }}
-                                </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profil</a></li>
+                    <div class="dropdown main-btn">
+                            <a class="nav-link dropdown-toggle fs-4 " href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <li><a class="dropdown-item" href="{{ route('profile.index') }}">Profil</a></li>
 
-                                <li><a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('main.nav.logout') }}</a></li>
-    
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </ul>
-                        </li>
-                    @endguest
-    
-                </ul>
+                            <li><a class="dropdown-item " href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('main.nav.logout') }}</a></li>
+        
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </div>
+                @endguest
             </div>
         </div>
     </nav>
@@ -210,7 +199,6 @@
     </section>
     
 
-        <!-- Scripts -->
         @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/main.css', 'resources/js/main.js'])
 </body>
 </html>

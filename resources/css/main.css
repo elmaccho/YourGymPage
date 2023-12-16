@@ -4,6 +4,10 @@
 .primary-background{
     background-color: #FF6B00;
 }
+.navbarNavDropdown{
+    display: flex;
+    gap: 45px;
+}
 
 .navbar{
     background: #ffffff0a;
@@ -18,8 +22,7 @@
 }
 .main-btn{
     background-color: #FF6B00;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding: 8px 25px;
 }
 .nav-link{
     color: white;
@@ -242,6 +245,10 @@
     .navbar{
         background-color: rgb(255, 255, 255);
         flex-direction: column;
+    }
+    .navbarNavDropdown{
+        flex-direction: column;
+        align-items: flex-start;
     }
     .navbar-icon-fa{
         color: #232323;
