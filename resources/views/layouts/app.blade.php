@@ -34,14 +34,14 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse nav-bar" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav me-auto">
                         <a href="{{ route('main.index') }}">Powrót na stronę główną</a>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ms-auto">
+                    <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))
@@ -56,20 +56,14 @@
                                 </li>
                             @endif
                         @else
-                            <li class="nav-item dropdown">
+                            <li class="nav-item dropdown navbar-r">
+                                <a class="nav-link dropdown-item" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-
-                                    @can('isAdmin')
-                                        <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('shop.nav.users') }}</a>
-                                        <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('shop.nav.products') }}</a>
-                                    @endcan
-                                        
-                                    <a class="dropdown-item" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
-
+                                <div class="dropdown-menu dropdown-menu-end user-dropdown" aria-labelledby="navbarDropdown">                                      
                                     <a class="dropdown-item" href="{{ route('orders.index') }}">{{ __('Zamówienia') }}</a>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
@@ -82,6 +76,17 @@
                                         @csrf
                                     </form>
                                 </div>
+                                
+                                @can('isAdmin')
+                                    <a id="navbarDropdown admin-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                        Panel Administracyjny
+                                    </a>
+
+                                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="admin-dropdown">                                      
+                                        <a class="dropdown-item" href="{{ route('users.index') }}">{{ __('shop.nav.users') }}</a>
+                                        <a class="dropdown-item" href="{{ route('products.index') }}">{{ __('shop.nav.products') }}</a>
+                                    </div>
+                                @endcan
                             </li>
                         @endguest
                     </ul>
@@ -95,7 +100,7 @@
     </div>
 
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+        @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/layouts.css'])
         
         <script type="text/javascript">
             @yield('javascript')

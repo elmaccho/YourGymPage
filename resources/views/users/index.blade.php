@@ -8,50 +8,79 @@
             <h1><i class="fa-solid fa-users"></i> {{ __('shop.user.index_title') }}</h1>
         </div>
     </div>
-    <table class="table table-striped">
-        {{-- <div class="row">
-            <form class="d-flex" id="searchForm" action="{{ route('users.search') }}" method="GET">
-                <input id="search_input" class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
-            </form>
-        </div> --}}
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">{{ __('shop.user.fields.name') }}</th>
-            <th scope="col">{{ __('shop.user.fields.surname') }}</th>
-            <th scope="col">{{ __('shop.user.fields.email') }}</th>
-            <th scope="col">{{ __('shop.user.fields.phone_number') }}</th>
-            <th scope="col">{{ __('shop.user.fields.pass_type') }}</th>
-            <th scope="col">{{ __('shop.user.fields.actions') }}</th>
-        </tr>
-        </thead>
-        <tbody id="item_wrapper">
-            @foreach ($users as $user)
-                <tr>
-                    <th scope="row">{{ $user->id }}</th>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->surname }}</td>
-                    <td>{{ $user->email }}</td>
-                    <td>{{ $user->phone_number }}</td>
-                    <td>{{ $user->pass_type }}</td>
-                    <td>
-                        <a href="{{ route('users.edit', $user->id) }}">
-                            <button class="btn btn-success btn-sm ">
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>
-                        </a>
-                        <button class="btn btn-danger btn-sm delete" data-id="{{ $user->id }}">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
-                    </td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
+                <table class="table manage-candidates-top mb-0">
+                    <thead>
+                        <tr>
+                        <th>#</th>
+                        <th>Dane użytkownika</th>
+                        <th class="text-center">Typ karnetu</th>
+                        <th class="action text-right">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)
+                            <tr class="candidates-list mb-4">
+                                <div class="inner-wrapper">
+                                    <td><strong>{{ $user->id }}</strong></td>
+                                    <td class="title">
+                                        <div class="thumb">
+                                            @if (!is_null($user->image_path))
+                                                    <img class="img-fluid" src="{{ asset('storage/'. $user->image_path) }}" alt="">
+                                                @else
+                                                    <img class="img-fluid" src="{{ asset('storage/user/defaultUser.jpg') }}" alt="">
+                                            @endif
+                                        </div>
+                                        <div class="candidate-list-details">
+                                            <div class="candidate-list-info">
+                                                <div class="candidate-list-title">
+                                                    <h5 class="mb-0">{{ $user->name }} {{ $user->surname }}</h5>
+                                                </div>
+                                                <div class="candidate-list-option">
+                                                    <ul class="list-unstyled user-data">
+                                                        <li><i class="fa-solid fa-at"></i> {{ $user->email }}</li>
+                                                        <li><i class="fa-solid fa-phone"></i> {{ $user->phone_number }}</li>
+                                                        <li><i class="fas fa-map-marker-alt pr-1"></i>
+                                                            @if ($user->hasAddress())
+                                                                    {{ $user?->address?->city }} {{ $user?->address?->home_no }} {{ $user?->address?->zip_code }}    
+                                                                @else
+                                                                    Brak danych adresowych
+                                                            @endif
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </div>
+                                <td class="candidate-list-favourite-time text-center">
+                                    @if ($user->hasPassType())
+                                            {{ $user?->passType?->name }}
+                                        @else
+                                            Brak informacji o karnecie
+                                    @endif
+                                </td>
+                                <td>
+                                    <ul class="list-unstyled user-action">
+                                        <li><a href="{{ route('users.edit', $user->id) }}" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a></li>
+                                        <li><a href="#" class="text-danger delete" data-id="{{ $user->id }}" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
     {{ $users->links() }}
 </div>
 @endsection
+@vite('resources/css/users.css')
 @section('javascript')
     const deleteUrl = "{{ url('users') }}/";
     const confirmDelete = "{{ __('shop.messages.delete_title') }}";
@@ -60,6 +89,5 @@
     const deleteCancel = "{{ __('shop.messages.delete_cancel') }}";
 @endsection
 @section('js-files')
-    @vite('resources/js/delete.js');
-    {{-- @vite('resources/js/search.js'); --}}
+    @vite('resources/js/delete.js')
 @endsection

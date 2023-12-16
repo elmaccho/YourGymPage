@@ -58,9 +58,6 @@
     display: grid;
     grid-template-columns: auto auto auto;
 }
-.card-row{
-    display: flex;
-}
 .card-wrapper{
     display: flex;
     flex-direction: column;
@@ -70,6 +67,9 @@
     width: 100%;
     position: relative;
     background-color: #1E1E1E;
+}
+.card-info{
+    max-width: 400px;
 }
 .read-more-btn{
     background-color: #FF6B00;
@@ -270,5 +270,19 @@
     }
     #offert{
         grid-template-columns: auto;
+    }
+}
+@media screen and (max-width: 570px) {
+    #signin{
+        padding: 25px;
+    }
+    .pass-wrapper{
+        width: 100%;
+    }
+    .pass-price{
+        font-size: 30px;
+    }
+    .pass-info{
+        padding: 15px;
     }
 }
