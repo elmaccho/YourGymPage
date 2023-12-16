@@ -29,7 +29,7 @@
                 <a class="nav-link fs-4 nav-item" href="{{ url('/') }}">Sklep</a>
     
                 @guest
-                    <a class="nav-link fs-4 nav-item" href="{{ route('login') }}">Zaloguj się</a>
+                    <a class="nav-link fs-4 nav-item main-btn" href="{{ route('login') }}">Zaloguj się</a>
                 @else
     
                     <div class="dropdown main-btn">
