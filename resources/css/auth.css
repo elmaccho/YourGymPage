@@ -1,6 +1,6 @@
 body{
     background-color: #232323 !important; 
-    background-image: url('/public/images/girl-3253532_1920.jpg');
+    background-image: url('/public/images/girl-3253532_1920.jpg') !important;
     background-blend-mode:luminosity;
     background-size: cover;
     background-repeat: no-repeat;
@@ -14,6 +14,9 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+.companyLogo{
+    width: 300px !important;
 }
 .btn-main{
     background-color: #FF6B00 !important;
@@ -62,5 +65,10 @@ body{
     .fullname-wrapper{
         flex-direction: column;
         align-items: center;
+    }
+}
+@media screen and (max-width: 850px) {
+    .logo-wrapper{
+        display: none;
     }
 }

@@ -7,7 +7,7 @@
           <div class="row mb-5">
             <div class="col-12 d-flex align-items-center justify-content-between">
               <div class="dropdown me-3">
-                  <label class="me-2">Sort by:</label>
+                  <label class="me-2 text-light">Sort by:</label>
                   <button class="btn btn-lg btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       Relevance <span class="caret"></span>
                   </button>
@@ -20,7 +20,7 @@
               </div>
           
               <div class="dropdowN">
-                  <label class="me-2">View:</label>
+                  <label class="me-2 text-light">View:</label>
                   <a class="btn btn-lg btn-light dropdown-toggle products-actual-count" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                       5<span class="caret"></span>
                   </a>
@@ -40,36 +40,39 @@
               <div class="card h-100 border-0">
                 <div class="card-img-top">
                   @if(!is_null($product->image_path))
-                    <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid mx-auto d-block" alt="Zdjęcie produktu">
+                    <img src="{{ asset('storage/' . $product->image_path) }}" class="img-fluid mx-auto d-block product-image" alt="Zdjęcie produktu">
                   @else
-                    <img src="{{ $defaultImage }}" class="img-fluid mx-auto d-block" alt="Zdjęcie produktu">
+                    <img src="{{ $defaultImage }}" class="img-fluid mx-auto d-block product-image" alt="Zdjęcie produktu">
                   @endif
                 </div>
-                <div class="card-body text-center bg-white">
-                  <h4 class="card-title">
+                <div class="card-body text-center">
+
+                
+                  <h4 class="card-title text-light">
                     {{ $product->name }}
                   </h4>
-                  <h5 class="card-price small">
+                  <h5 class="card-price small text-light">
                     <i>PLN {{ $product->price }}</i>
                   </h5>
                 </div>
-
-                <button class="btn btn-success btn-sm add-cart-btn" data-id="{{ $product->id }}" @guest disabled @endguest>
-                  <i class="fas fa-cart-plus"></i> Dodaj do koszyka
-                </button>
+                  @guest
+                      <button class="btn btn-danger">
+                        Do zakupów internetowych wymagane jest konto
+                      </button>
+                    @else
+                      <button class="btn btn-sm add-cart-btn btn-main" data-id="{{ $product->id }}" @guest disabled @endguest>
+                        <i class="fas fa-cart-plus"></i> Dodaj do koszyka
+                      </button>
+                  @endguest
               </div>
             </div>
             @endforeach
           </div>
           <div class="row sorting mb-5 mt-5">
             <div class="col-12">
-              <a class="btn btn-light">
-                <i class="fas fa-arrow-up mr-2"></i> Back to top
-              </a>
-
               <div class="dropdown flex-md-row-reverse">
-                  <label class="me-2">View:</label>
-                  <a class="btn btn-lg btn-light dropdown-toggle products-actual-count" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                  <label class="me-2 text-light">View:</label>
+                  <a class="btn btn-lg btn-light dropdown-toggle products-actual-count " type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                     5<span class="caret"></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-end products-count" aria-labelledby="dropdownMenuButton">
@@ -85,32 +88,31 @@
         </div>
       </div>
       <form class="col-md-4 order-md-1 col-lg-3 sidebar-filter">
-        <h3 class="mt-0 mb-5">{{ __('shop.welcome.products') }}: {{ count($products) }}</h3>
+        <h3 class="mt-0 mb-5 text-light">{{ __('shop.welcome.products') }}: {{ count($products) }}</h3>
         <h6 class="text-uppercase font-weight-bold mb-3">{{ __('shop.welcome.categories') }}</h6>
 
         @foreach ($categories as $category)
           <div class="mt-2 mb-2 pl-2">
             <div class="custom-control custom-checkbox">
               <input type="checkbox" class="custom-control-input" name="filter[categories][]" id="{{ $category->id }}" value="{{ $category->id }}">
-              <label class="custom-control-label" for="{{ $category->id }}">{{ $category->name }}</label>
+              <label class="custom-control-label text-light" for="{{ $category->id }}">{{ $category->name }}</label>
             </div>
           </div>
         @endforeach
 
         <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-        <h6 class="text-uppercase mt-5 mb-3 font-weight-bold">{{ __('shop.welcome.price') }}</h6>
+        <h6 class="text-uppercase mt-5 mb-3 font-weight-bold text-light">{{ __('shop.welcome.price') }}</h6>
         <div class="price-filter-control">
           <input type="number" class="form-control w-50 pull-left mb-2" placeholder="50" name="filter[price_min]" id="price-min-control">
           <input type="number" class="form-control w-50 pull-right" placeholder="150" name="filter[price_max]" id="price-max-control">
         </div>
         <input id="ex2" type="text" class="slider " value="50,150" data-slider-min="10" data-slider-max="200" data-slider-step="5" data-slider-value="[50,150]" data-value="50,150" style="display: none;">
         <div class="divider mt-5 mb-5 border-bottom border-secondary"></div>
-        <a href="#" class="btn btn-lg btn-primary w-100 mt-5" id="filter-btn">{{ __('shop.welcome.filter') }}</a>
+        <a href="#" class="btn btn-lg w-100 mt-5 btn-main" id="filter-btn">{{ __('shop.welcome.filter') }}</a>
       </form>
   
     </div>
-  </div>
-  
+</div>
 @endsection
 @section('javascript')
     const WELCOME_DATA = {
@@ -121,5 +123,6 @@
     }
 @endsection
 @section('js-files')
-    @vite('resources/js/welcome.js');
+    @vite('resources/js/welcome.js')
 @endsection
+@vite('resources/css/shop.css')

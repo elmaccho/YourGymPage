@@ -25,9 +25,9 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm nav-wrapper">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand text-light" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
@@ -44,23 +44,25 @@
                     <ul class="navbar-nav">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('login') }}">{{ __('shop.nav.login') }}</a>
-                                </li>
-                            @endif
-
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('shop.nav.register') }}</a>
-                                </li>
-                            @endif
+                            <div class="d-flex auth-wrapper">
+                                @if (Route::has('login'))
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" href="{{ route('login') }}">{{ __('shop.nav.login') }}</a>
+                                    </li>
+                                @endif
+    
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link text-light" href="{{ route('register') }}">{{ __('shop.nav.register') }}</a>
+                                    </li>
+                                @endif
+                            </div>
                         @else
                             <li class="nav-item dropdown navbar-r">
-                                <a class="nav-link dropdown-item" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
+                                <a class="nav-link dropdown-item text-light" href="{{ route('cart.index') }}">{{ __('Koszyk') }}</a>
 
                                 <div class="dropdown-wrapper">
-                                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         {{ Auth::user()->name }}
                                     </a>
     
@@ -81,7 +83,7 @@
                                 
                                 @can('isAdmin')
                                 <div class="dropdown-wrapper">
-                                    <a id="navbarDropdown admin-dropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    <a id="navbarDropdown admin-dropdown" class="nav-link dropdown-toggle text-light" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                         Panel Administracyjny
                                     </a>
 
@@ -104,8 +106,7 @@
     </div>
 
         <!-- Scripts -->
-        @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/layouts.css'])
-        
+        @vite(['resources/sass/app.scss', 'resources/js/app.js', 'resources/css/layouts.css', 'resources/css/shop.css'])
         <script type="text/javascript">
             @yield('javascript')
         </script>

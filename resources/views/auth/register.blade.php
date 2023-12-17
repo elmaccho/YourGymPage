@@ -3,8 +3,8 @@
 @section('content')
 <div class="container-wrapper">
     <div class="logo-wrapper">
-        <img src="{{ asset('images/yourgymLogo.webp') }}" class="w-25" alt="">
-        <strong class="h2 text-light quote-box"></strong>
+        <img src="{{ asset('images/yourgymLogo.webp') }}" class="companyLogo" alt="">
+        <strong class="h1 text-light">Początek jest najtrudniejszy</strong>
     </div>
     <div class="form-wrapper">
         <div class="card card-form">
@@ -106,7 +106,4 @@
     </div>
 </div><script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @endsection
-@vite([
-    'resources/css/auth.css',
-    'resources/js/api.js'    
-])
+@vite(['resources/css/auth.css'])

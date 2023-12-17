@@ -60,9 +60,15 @@ $(function(){
                     '                        <i>PLN ' + product.price + '</i>' +
                     '                    </h5>' +
                     '                </div>' +
-                    '                <button class="btn btn-success btn-sm add-cart-btn"' + getDisabled() + ' data-id="' + product.id + '">' +
-                    '                   <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
-                    '                </button>'
+                    '                   @guest' +
+                    '                       <button class="btn btn-danger">' +
+                    '                           Do zakupów internetowych wymagane jest konto' +
+                    '                       </button>' +
+                    '                   @else' +
+                    '                       <button class="btn btn-sm add-cart-btn btn-main" data-id="{{ $product->id }}" @guest disabled @endguest>' +
+                    '                           <i class="fas fa-cart-plus"></i> Dodaj do koszyka' +
+                    '                       </button>' +
+                    '                   @endguest' +
                     '            </div>' +
                     '        </div>';
                 $('div#products-wrapper').append(html);
