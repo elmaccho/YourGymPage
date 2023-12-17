@@ -1,9 +1,19 @@
 body{
     background-color: #232323 !important; 
     background-image: url('/public/images/girl-3253532_1920.jpg');
+    background-blend-mode:luminosity;
     background-size: cover;
     background-repeat: no-repeat;
     background-position-x: right;
+}
+.logo-company{
+    width: 250px !important;
+}
+.logo-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 .btn-main{
     background-color: #FF6B00 !important;
@@ -22,6 +32,10 @@ body{
     width: 100%;
     align-items: center;
 }
+.form-wrapper{
+    width: 35%;
+    min-width: 350px;
+}
 .form-body{
     display: flex;
     align-items: center;
@@ -29,9 +43,7 @@ body{
 }
 .fullname-wrapper{
     display: flex;
-    /* justify-content: space-between !important; */
     width: 100%;
-    /* background-color: gold; */
 }
 .row > *{
     padding: unset !important;
@@ -39,6 +51,12 @@ body{
 .form-check{
     display: flex;
     justify-content: right !important;
+}
+.container-wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
 }
 @media screen and (max-width: 767.11px) {
     .fullname-wrapper{

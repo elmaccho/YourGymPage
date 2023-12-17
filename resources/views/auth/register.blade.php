@@ -1,10 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row form-wrapper">
-        <div class="col-md-5">
-            <div class="card card-form">
+<div class="container-wrapper">
+    <div class="logo-wrapper">
+        <img src="{{ asset('images/yourgymLogo.webp') }}" class="w-25" alt="">
+        <strong class="h2 text-light quote-box"></strong>
+    </div>
+    <div class="form-wrapper">
+        <div class="card card-form">
                 <div class="card-header text-center h1 m-3 text-light">{{ __('shop.register.register_title') }}</div>
                 <div class="card-body">
                     <form class="form-body" method="POST" action="{{ route('register') }}">
@@ -99,9 +102,11 @@
                         </div>
                     </form>
                 </div>
-            </div>
         </div>
     </div>
-</div>
+</div><script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 @endsection
-@vite('resources/css/auth.css')
+@vite([
+    'resources/css/auth.css',
+    'resources/js/api.js'    
+])

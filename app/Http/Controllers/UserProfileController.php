@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Storage;
 
 class UserProfileController extends Controller
@@ -35,7 +36,7 @@ class UserProfileController extends Controller
             'passEndDate',
             'passCalculations',
             'today',
-            'orders'
+            'orders',
         ));
     }
     public function update(UserProfileRequest $request, User $user)
@@ -48,5 +49,4 @@ class UserProfileController extends Controller
             return redirect()->back()->with('error', 'Błąd podczas przesyłania pliku');
         }
     }
-    
 }

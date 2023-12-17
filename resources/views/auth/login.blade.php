@@ -1,13 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="row form-wrapper">
-            <div class="col-md-5">
+    <div class="container-wrapper">
+        <div class="form-wrapper">
                 @include('helpers.flash-messages')
                 <div class="card card-form">
                     <div class="card-header text-center h1 m-3 text-light">{{ __('shop.login.login_title') }}</div>
-
+                    <div class="w-100 d-flex justify-content-center">
+                        <img src="{{ asset('images/yourgymLogo.webp') }}" class="logo-company" alt="YourGym logo">
+                    </div>
                     <div class="card-body">
                         <form class="form-body" method="POST" action="{{ route('login') }}">
                             @csrf
@@ -26,7 +27,7 @@
                                 </div>
                             </div>
 
-                            <div class="row mb-3 form-row">
+                            <div class="row mb-1 form-row">
                                 <label for="password" class="col-md-9 col-form-label text-md-start text-light">{{ __('shop.login.password') }}</label>
 
                                 <div class="col-md-9">
@@ -40,11 +41,7 @@
                                 </div>
                             </div>
 
-                            <button type="submit" class="btn btn-lg btn-main text-light">
-                                        {{ __('shop.login.login_btn') }}
-                            </button>
-
-                            <div class="row mb-0">
+                            <div class="row mb-1 w-75">
                                 <div class="form-check w-100 d-flex gap-1">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -52,6 +49,13 @@
                                         {{ __('shop.login.remember_me') }}
                                     </label>
                                 </div>
+                            </div>
+
+                            <button type="submit" class="btn btn-lg btn-main text-light mb-3">
+                                        {{ __('shop.login.login_btn') }}
+                            </button>
+
+                            <div class="row mb-0">
                                 @if (Route::has('password.request'))
                                     <a class="btn btn-link" href="{{ route('password.request') }}">
                                         {{ __('shop.login.pass_remind') }}
@@ -61,7 +65,6 @@
                         </form>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
 @endsection

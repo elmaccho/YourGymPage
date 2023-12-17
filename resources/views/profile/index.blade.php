@@ -234,7 +234,7 @@
         'resources/sass/app.scss', 
         'resources/js/app.js', 
         'resources/css/main.css',
-        'resources/css/profile.css'
+        'resources/css/profile.css',
         ])
 </body>
 </html>
