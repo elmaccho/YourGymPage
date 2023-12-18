@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="row">
-        <table class="table table-striped">
+        {{-- <table class="table table-striped">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -59,7 +59,54 @@
                     </tr>
                 @endforeach
             </tbody>
-        </table>
+        </table> --}}
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">{{ __('shop.product.fields.name') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.description') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.amount') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.price') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.category') }}</th>
+                    <th scope="col">{{ __('shop.product.fields.action') }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)                    
+                    <tr>
+                        <td data-label="#" class="mob-id">{{ $product->id }}</td>
+                        <td data-label="Nazwa">{{ $product->name }}</td>
+                        <td data-label="Opis" class=" product-description">{{ $product->description }}</td>
+                        <td data-label="Ilość">{{ $product->amount }}</td>
+                        <td data-label="Cena">{{ $product->price }}</td>
+                        <td data-label="Kategoria">
+                            @if ($product->hasCategory())
+                                {{ $product->category->name }}
+                            @endif
+                        </td>
+                        <td data-label="Akcje">
+                            <div class="d-flex justify-content-between gap-1">
+                                <button class="btn btn-danger btn-sm delete " data-id="{{ $product->id }}">
+                                    <i class="fa-solid fa-trash-can"></i>
+                                </button>
+                                <a href="{{ route('products.edit', $product->id) }}">
+                                    <button class="btn btn-success btn-sm ">
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </button>
+                                </a>
+                                <a href="{{ route('products.show', $product->id) }}">
+                                    <button class="btn btn-primary btn-sm ">
+                                        <i class="fa-solid fa-eye text-white"></i>
+                                    </button>
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+          </table>
     </div>
 
     {{ $products->links() }}

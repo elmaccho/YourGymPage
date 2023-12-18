@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="user-dashboard-info-box table-responsive mb-0 p-4 shadow-sm user-list-w">
-                <table class="table manage-candidates-top mb-2">
+                {{-- <table class="table manage-candidates-top mb-2">
                     <thead>
                         <tr>
                         <th>#</th>
@@ -72,7 +72,56 @@
                             </tr>
                         @endforeach
                     </tbody>
-                </table>
+                </table> --}}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">{{ __('shop.user.fields.image') }}</th>
+                            <th scope="col">{{ __('shop.user.fields.name') }}</th>
+                            <th scope="col">{{ __('shop.user.fields.address.') }}</th>
+                            <th scope="col">{{ __('shop.user.fields.pass_type') }}</th>
+                            <th scope="col">{{ __('shop.user.fields.action') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($users as $user)                    
+                            <tr>
+                                
+                                <td data-label="#" class="mob-id">{{ $user->id }}</td>
+                                <td data-label="Zdjęcie">
+                                    <div class="user-image">
+                                        @if (!is_null($user->image_path))
+                                                <img class="img-fluid" src="{{ asset('storage/'. $user->image_path) }}" alt="">
+                                            @else
+                                                <img class="img-fluid" src="{{ asset('storage/user/defaultUser.jpg') }}" alt="">
+                                        @endif
+                                    </div>
+                                </td>
+                                <td data-label="Imię i nazwisko">{{ $user->name }} {{ $user->surname }}</td>
+                                <td data-label="Adres">
+                                    @if ($user->hasAddress())
+                                        {{ $user->address->city }}
+                                        @else
+                                            Brak informacji adresowych
+                                    @endif
+                                </td>
+                                <td data-label="Kategoria">
+                                    @if ($user->hasPassType())
+                                            {{ $user?->passType?->name }}
+                                        @else
+                                            Brak informacji o karnecie
+                                    @endif
+                                </td>
+                                <td data-label="Akcje">
+                                    <div class="d-flex justify-content-around">
+                                        <a href="{{ route('users.edit', $user->id) }}" data-toggle="tooltip" title="" data-original-title="Edit"><i class="fas fa-pencil-alt"></i></a>
+                                        <a href="#" class="text-danger delete" data-id="{{ $user->id }}" data-toggle="tooltip" title="" data-original-title="Delete"><i class="far fa-trash-alt"></i></a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
                 {{ $users->links() }}
             </div>
         </div>

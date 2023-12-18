@@ -1,4 +1,4 @@
-.p-4 {
+/* .p-4 {
     padding: 1.5rem!important;
 }
 .mb-0, .my-0 {
@@ -7,7 +7,7 @@
 .shadow-sm {
     box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
 }    
-/* user-dashboard-info-box */
+
 
 .user-dashboard-info-box .candidates-list .thumb {
     margin-right: 20px;
@@ -55,7 +55,7 @@
     color: #969696;
 }
 
-/* Candidate List */
+
 .candidate-list {
     background: #ffffff;
     display: -webkit-box;
@@ -192,4 +192,4 @@
         display: flex;
         flex-direction: column;
     }
-}
+} */
