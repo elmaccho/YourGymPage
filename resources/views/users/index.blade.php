@@ -5,14 +5,14 @@
     @include('helpers.flash-messages')
     <div class="row">
         <div class="col-10">
-            <h1><i class="fa-solid fa-users"></i> {{ __('shop.user.index_title') }}</h1>
+            <h1 class="text-light"><i class="fa-solid fa-users "></i> {{ __('shop.user.index_title') }}</h1>
         </div>
     </div>
 
     <div class="row">
         <div class="col-md-12">
-            <div class="user-dashboard-info-box table-responsive mb-0 bg-white p-4 shadow-sm">
-                <table class="table manage-candidates-top mb-0">
+            <div class="user-dashboard-info-box table-responsive mb-0 p-4 shadow-sm user-list-w">
+                <table class="table manage-candidates-top mb-2">
                     <thead>
                         <tr>
                         <th>#</th>
@@ -23,7 +23,7 @@
                     </thead>
                     <tbody>
                         @foreach ($users as $user)
-                            <tr class="candidates-list mb-4">
+                            <tr class="candidates-list">
                                 <div class="inner-wrapper">
                                     <td><strong>{{ $user->id }}</strong></td>
                                     <td class="title">
@@ -73,11 +73,11 @@
                         @endforeach
                     </tbody>
                 </table>
+                {{ $users->links() }}
             </div>
         </div>
     </div>
 
-    {{ $users->links() }}
 </div>
 @endsection
 @vite('resources/css/users.css')

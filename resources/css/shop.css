@@ -23,3 +23,10 @@ body{
 .card-img-top{
     overflow: hidden !important;
 }
+.user-list{
+    background-color: #23232356 !important;
+    backdrop-filter: blur(10px);
+}
+.product-description{
+    max-width: 500px;
+}

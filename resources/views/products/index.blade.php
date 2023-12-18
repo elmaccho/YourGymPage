@@ -5,7 +5,7 @@
     @include('helpers.flash-messages')
     <div class="row">
         <div class="col-10">
-            <h1> {{ __('shop.product.index_title') }}</h1>
+            <h1 class="text-light"> {{ __('shop.product.index_title') }}</h1>
         </div>
         <div class="col d-flex justify-content-end">
             <a class="" href="{{ route("products.create") }}">
@@ -31,7 +31,7 @@
                     <tr>
                         <th scope="row">{{ $product->id }}</th>
                         <td>{{ $product->name }}</td>
-                        <td>{{ $product->description }}</td>
+                        <td class="text-truncate product-description">{{ $product->description }}</td>
                         <td>{{ $product->amount }}</td>
                         <td>{{ $product->price }}</td>
                         <td>

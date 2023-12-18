@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('shop.product.edit_title') }}</div>
+                <div class="card-header text-light">{{ __('shop.product.edit_title') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('products.update', $product->id) }}" enctype="multipart/form-data">
@@ -13,7 +13,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.name') }}</label>
+                            <label for="name" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.name') }}</label>
 
                             <div class="col-md-6">
                                 <input id="name" type="text" maxlength="500" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ $product->name }}" required autocomplete="name" autofocus>
@@ -27,7 +27,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="description" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.description') }}</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.description') }}</label>
 
                             <div class="col-md-6">
                                 <textarea id="description" maxlength="1500" class="form-control @error('description') is-invalid @enderror" name="description" autofocus>{{ $product->description }}</textarea>
@@ -41,7 +41,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="amount" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.amount') }}</label>
+                            <label for="amount" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.amount') }}</label>
 
                             <div class="col-md-6">
                                 <input id="amount" type="number" min="0" class="form-control @error('amount') is-invalid @enderror" name="amount" value="{{ $product->amount }}" required autocomplete="amount">
@@ -55,7 +55,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="category" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.category') }}</label>
+                            <label for="category" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.category') }}</label>
 
                             <div class="col-md-6">
                                 <select id="category" class="form-control @error('category_id') is-invalid @enderror" name="category_id">
@@ -74,7 +74,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.price') }}</label>
+                            <label for="price" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.price') }}</label>
 
                             <div class="col-md-6">
                                 <input id="price" type="number" step="0.01" min="0" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ $product->price }}" required autocomplete="price">
@@ -88,7 +88,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <label for="image" class="col-md-4 col-form-label text-md-end">{{ __('shop.product.fields.image') }}</label>
+                            <label for="image" class="col-md-4 col-form-label text-md-end text-light">{{ __('shop.product.fields.image') }}</label>
 
                             <div class="col-md-6">
                                 <input id="image" type="file" class="form-control @error('image') is-invalid @enderror" name="image">
@@ -104,7 +104,7 @@
                         @if (!is_null($product->image_path)) 
                             <div class="row mb-3 justify-content-center">
                                 <div class="col-md-6 d-flex align-items-center gap-2">
-                                    <a class="btn btn-primary btn-sm" href="{{ route('products.downloadImage', $product->id) }}">Pobierz</a>
+                                    <a class="btn btn-main btn-sm" href="{{ route('products.downloadImage', $product->id) }}">Pobierz</a>
                                     <img class="form-control" src="{{ asset('storage/' . $product->image_path) }}" alt="Zdjęcie produktu">
                                 </div>
                             </div>
@@ -114,7 +114,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 fl-right">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-main">
                                     {{ __('shop.button.save') }}
                                 </button>
                             </div>
